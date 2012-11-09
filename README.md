@@ -42,8 +42,8 @@ that has not implemented "equals" method yet:
 ````
 
 Set<Class<?>>  classes = scan.allClasses(
-    						annotedOnClassWith(Entity.class).and(not(hasMethod("equals")))
-								).exactlyIn("br.com.domain");
+    annotedOnClassWith(Entity.class).and(not(hasMethod("equals")))
+    ).exactlyIn("br.com.domain");
 ````
 If you have a large amount of classes, scanning may take a while.
 By default it will scan only your source folder classes. 
@@ -63,9 +63,9 @@ First create a class that implements the Argument interface.
 ````
 public class NameEndsWithTest implements Argument {
   @Override
-	public boolean validate(Class<?> clazz) {
-    return false;
-	}
+    public boolean validate(Class<?> clazz) {
+        return false;
+    }
 }
 ````
 You have to implement the "validate" method according to what you want to check.
@@ -88,7 +88,7 @@ Maybe if we extract it to a method call.
 Set<Class<?>> classes = scan.allClasses(thatNameEndsWithTest()).exactlyIn("br.com.test");
 
 public Argument thatNameEndsWithTest(){
-	return new NameEndsWithTest();
+    return new NameEndsWithTest();
 }
 
 ````
@@ -98,21 +98,17 @@ Maybe if we pass the name we want our class to end with as an argument.
 Set<Class<?>> classes = scan.allClasses(thatNameEndsWith("Test")).exactlyIn("br.com.test");
 
 public Argument thatNameEndsWithTest(String namme){
-	return new NameEndsWithTest(name);
+    return new NameEndsWithTest(name);
 }
 ````
 Let's modify our "NameEndsWithTest" class. 
-First rename it to "NameEndsWith";
+Rename it to "NameEndsWith" and next, create a constructor that recives the String we want to check.
 ````
 public class NameEndsWith implements Argument {
-````
-Next, create a constructor that recives the String we want to check.
-````
-public class NameEndsWith implements Argument {
-  private String endsWith;
-  public NameEndsWith(String endsWith){
-    this.endsWith = endsWith;
-  }
+    private String endsWith;
+    public NameEndsWith(String endsWith){
+        this.endsWith = endsWith;
+    }
 ````
 Now use the "endsWith" on the "validate" method.
 ````
