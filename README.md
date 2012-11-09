@@ -1,8 +1,9 @@
-ScanYourPath
+ScanYourPath, a DSL java library for classpath scanning.
 ==
 --
 
-Scan Your Path is a DSL java library for classpath scanning.
+I went through many situations where I needed to search classes dynamically, Hibernate and GAE are good examples.  
+I looked up and found some APIs, but didn't like how they were implemented. So I thought it would be cool to make my own library that would help in this task.  
 
 Getting Started
 --
@@ -33,7 +34,7 @@ public interface Argument{
 
 }
 ````
-Although the framework has a certain amount of Argument implementations, you may need something more specific,
+Although the api has a certain amount of Argument implementations, you may need something more specific,
 so you may create your own implementation of Argument.
 
 You may also combine Arguments to make a more specific search. Say you want to find all classes with the @Entity
@@ -54,7 +55,7 @@ scan.limitSearchingPathTo(jar());
 scan.limitSearchingPathTo(full());
 ````
 
-How to create your own Argument
+Creating your own Argument
 --
 Creating your own argument is quite simple, just implement the Argument interface.
 Lets create an argument that checks if the class name ends with "Test"
