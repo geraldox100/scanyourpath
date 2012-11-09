@@ -25,4 +25,8 @@ public final class SearchArguments {
 	public static final CombinableArgument not(Argument argument) {
 		return new CombinableArgument(new NotArgument(argument));
 	}
+	
+	public static final CombinableArgument hasMethod(String method) {
+		return new CombinableArgument(new HasMethodArgument(method));
+	}
 }

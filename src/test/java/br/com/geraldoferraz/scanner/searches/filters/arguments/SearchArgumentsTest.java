@@ -1,10 +1,9 @@
 package br.com.geraldoferraz.scanner.searches.filters.arguments;
 
-
-
 import static br.com.geraldoferraz.scanner.searches.filters.arguments.SearchArguments.annotedOnClassWith;
 import static br.com.geraldoferraz.scanner.searches.filters.arguments.SearchArguments.annotedOnFieldWith;
 import static br.com.geraldoferraz.scanner.searches.filters.arguments.SearchArguments.annotedOnMethodWith;
+import static br.com.geraldoferraz.scanner.searches.filters.arguments.SearchArguments.hasMethod;
 import static br.com.geraldoferraz.scanner.searches.filters.arguments.SearchArguments.not;
 import static br.com.geraldoferraz.scanner.searches.filters.arguments.SearchArguments.thatExtends;
 import static br.com.geraldoferraz.scanner.searches.filters.arguments.SearchArguments.thatImplements;
@@ -18,6 +17,7 @@ import br.com.geraldoferraz.scanner.TestBase;
 import br.com.geraldoferraz.scanner.searches.filters.arguments.examples.ClassLevelAnnotation;
 import br.com.geraldoferraz.scanner.searches.filters.arguments.examples.FieldLevelAnnotation;
 import br.com.geraldoferraz.scanner.searches.filters.arguments.examples.MethodLevelAnnotation;
+import br.com.geraldoferraz.scanner.util.EmptyStringException;
 
 public class SearchArgumentsTest extends TestBase {
 
@@ -29,6 +29,7 @@ public class SearchArgumentsTest extends TestBase {
 		assertThat(thatExtends(Object.class), notNullValue());
 		assertThat(thatImplements(Argument.class), notNullValue());
 		assertThat(not(annotedOnFieldWith(FieldLevelAnnotation.class)), notNullValue());
+		assertThat(hasMethod("ANY"), notNullValue());
 	}
 
 	@Test
@@ -39,6 +40,7 @@ public class SearchArgumentsTest extends TestBase {
 		assertThat(not(annotedOnFieldWith(FieldLevelAnnotation.class)), instanceOf(CombinableArgument.class));
 		assertThat(thatExtends(Object.class), instanceOf(CombinableArgument.class));
 		assertThat(thatImplements(Argument.class), instanceOf(CombinableArgument.class));
+		assertThat(hasMethod("ANY"), instanceOf(CombinableArgument.class));
 	}
 
 	@Test
@@ -48,6 +50,7 @@ public class SearchArgumentsTest extends TestBase {
 		assertThat(annotedOnFieldWith(FieldLevelAnnotation.class), instanceOf(Argument.class));
 		assertThat(thatExtends(Object.class), instanceOf(Argument.class));
 		assertThat(thatImplements(Argument.class), instanceOf(Argument.class));
+		assertThat(hasMethod("ANY"), instanceOf(Argument.class));
 	}
 	
 	@Test(expected=IllegalArgumentException.class)
@@ -78,6 +81,16 @@ public class SearchArgumentsTest extends TestBase {
 	@Test(expected=IllegalArgumentException.class)
 	public void passingAnNullArgumentToNot() {
 		not(null);
+	}
+	
+	@Test(expected=EmptyStringException.class)
+	public void passingAnNullArgumentToHasMethod() {
+		hasMethod(null);
+	}
+	
+	@Test(expected=EmptyStringException.class)
+	public void passingAnEmptyStringToHasMethod() {
+		hasMethod("");
 	}
 	
 

@@ -57,11 +57,11 @@ public class Main {
 		classes = scan.allClasses().exactlyIn(exactlyIn);
 		print(classes);
 		classes = scan.allClasses().startingIn(startingIn);
+		// .and(
 		print(classes);
 
 		// CombinableArgument a4 =
 		// annotedOnClassWith(ClassLevelAnnotation.class)
-		// .and(
 		// annotedOnMethodWith(MethodLevelAnnotation.class)
 		// .or(
 		// annotedOnFieldWith(ClassLevelAnnotation.class)
