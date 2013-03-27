@@ -98,7 +98,7 @@ Maybe if we pass the name we want our class to end with as an argument.
 ````
 Set<Class<?>> classes = scan.allClasses(thatNameEndsWith("Test")).exactlyIn("br.com.test");
 
-public Argument thatNameEndsWithTest(String namme){
+public Argument thatNameEndsWithTest(String name){
     return new NameEndsWithTest(name);
 }
 ````
