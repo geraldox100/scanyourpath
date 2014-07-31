@@ -26,6 +26,7 @@ public class LoaderUtil {
 
 	private File emptyJarFile;
 	private File notEmptyJarFile;
+	
 
 	public LoaderUtil() {
 		createMocks();
@@ -35,7 +36,7 @@ public class LoaderUtil {
 
 	private void createMocks() {
 
-		rootPath = "/home/workspace/project";
+		rootPath = "home/workspace/project";
 		defaultPackage = "/br/com/geraldo";
 		separator = System.getProperty("file.separator");
 

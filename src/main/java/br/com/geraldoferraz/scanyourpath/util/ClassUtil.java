@@ -29,7 +29,7 @@ public final class ClassUtil {
 	}
 
 	public static String getFullQualifiedName(File file) {
-		argumentValidation(file);
+		 argumentValidation(file);
 
 		String absolutePath = file.getAbsolutePath().replace(System.getProperty("file.separator"), ".").substring(1);
 		String result = removeClassFromString(absolutePath);
@@ -47,7 +47,14 @@ public final class ClassUtil {
 
 	public static String extractPackageNameFromFullQualifiedName(String className) {
 		argumentValidation(className);
+		chckeThatClassContainsPackage(className);
 		return className.substring(0, className.lastIndexOf("."));
+	}
+
+	private static void chckeThatClassContainsPackage(String className) {
+		if(!className.contains(".")){
+			throw new IllegalArgumentException("Class "+className+" has no package");
+		}
 	}
 
 	public static String removeDirectory(String fullName, String folderToRemove) {

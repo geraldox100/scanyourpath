@@ -18,6 +18,7 @@ import br.com.geraldoferraz.scanyourpath.util.EmptyStringException;
 
 public class ClassUtilTest extends TestBase {
 
+	private String separator = System.getProperty("file.separator");
 	@Mock
 	private File notFile;
 
@@ -40,18 +41,18 @@ public class ClassUtilTest extends TestBase {
 	@Before
 	public void before() {
 		when(notFile.isFile()).thenReturn(false);
-		when(notFile.getAbsolutePath()).thenReturn("/home/classes/geraldo");
+		when(notFile.getAbsolutePath()).thenReturn(separator+"home"+separator+"classes"+separator+"geraldo");
 
 		when(notClassFile.isFile()).thenReturn(true);
 		when(notClassFile.getName()).thenReturn("File.txt");
-		when(notClassFile.getAbsolutePath()).thenReturn("/home/classes/geraldo/File.txt");
+		when(notClassFile.getAbsolutePath()).thenReturn(""+separator+"home"+separator+"classes"+separator+"geraldo"+separator+"File.txt");
 
 		when(classFile.isFile()).thenReturn(true);
 		when(classFile.getName()).thenReturn("File.class");
-		when(classFile.getAbsolutePath()).thenReturn("/home/classes/geraldo/File.class");
+		when(classFile.getAbsolutePath()).thenReturn(separator+"home"+separator+"classes"+separator+"geraldo"+separator+"File.class");
 
-		when(notClassJarEntry.getName()).thenReturn("home/classes/geraldo/File.txt");
-		when(classJarEntry.getName()).thenReturn("home/classes/geraldo/File.class");
+		when(notClassJarEntry.getName()).thenReturn("home"+separator+"classes"+separator+"geraldo"+separator+"File.txt");
+		when(classJarEntry.getName()).thenReturn("home"+separator+"classes"+separator+"geraldo"+separator+"File.class");
 	}
 
 	@Test(expected = IllegalArgumentException.class)
@@ -128,6 +129,11 @@ public class ClassUtilTest extends TestBase {
 	public void whenEextractPackageNameFromFullQualifiedNamePassingNullArgument() {
 		ClassUtil.extractPackageNameFromFullQualifiedName(null);
 	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void whenExtractPackageNmaeFromClassThatDoesNotHavePackage(){
+		ClassUtil.extractPackageNameFromFullQualifiedName("InstallCert$SavingTrustManager");
+	}
 
 	@Test
 	public void whenEextractPackageNameFromFullQualifiedName() {
@@ -156,7 +162,12 @@ public class ClassUtilTest extends TestBase {
 
 	@Test
 	public void whenRemoveDirectory() {
-		assertEquals("File", ClassUtil.removeDirectory("home.classes.geraldo.File", "/home/classes/geraldo"));
+		assertEquals("File", ClassUtil.removeDirectory("home.classes.geraldo.File", separator+"home"+separator+"classes"+separator+"geraldo"));
+	}
+	
+	@Test
+	public void whenClassDoesNotHavePackage(){
+		
 	}
 
 }
