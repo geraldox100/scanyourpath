@@ -42,19 +42,19 @@ public class ClassPathResolverTest extends TestBase{
 	
 	@Test
 	public void whenGetClassesExactlyInAndTheClassIsOnPackage() {
-		Set<Class<?>> classes = classPathResolver.getClassesExactlyIn("br.com.geraldoferraz.scanner.util");
+		Set<Class<?>> classes = classPathResolver.getClassesExactlyIn("br.com.geraldoferraz.scanyourpath.util");
 		assertEquals(6, classes.size());
 	}
 	
 	@Test
 	public void whenGetClassesStartingInAndTheClassIs01() {
-		Set<Class<?>> classes = classPathResolver.getClassesStartingIn("br.com.geraldoferraz.scanner.resolver");
+		Set<Class<?>> classes = classPathResolver.getClassesStartingIn("br.com.geraldoferraz.scanyourpath.resolver");
 		assertEquals(11, classes.size());
 	}
 	
 	@Test
 	public void whenGetClassesStartingInAndTheClassIs02() {
-		Set<Class<?>> classes = classPathResolver.getClassesStartingIn("br.com.geraldoferraz.scanner.resolver.example");
+		Set<Class<?>> classes = classPathResolver.getClassesStartingIn("br.com.geraldoferraz.scanyourpath.resolver.example");
 		assertEquals(1, classes.size());
 	}
 

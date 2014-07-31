@@ -14,7 +14,7 @@ import br.com.geraldoferraz.scanyourpath.util.EmptyStringException;
 public class ClassGrouperTest extends TestBase {
 	
 	private ClassGrouper grouper;
-	private static final String packageName = "br.com.geraldoferraz.scanner.resolver";
+	private static final String packageName = "br.com.geraldoferraz.scanyourpath.resolver";
 	
 	@Before
 	public void before(){
@@ -69,15 +69,15 @@ public class ClassGrouperTest extends TestBase {
 	
 	@Test
 	public void whenAddingOneClass(){
-		grouper.addClass("br.com.geraldoferraz.scanner.resolver.ExampleClass01");
+		grouper.addClass("br.com.geraldoferraz.scanyourpath.resolver.ExampleClass01");
 		Set<Class<?>> classesOnString = grouper.getClassesOnString();
 		assertEquals(1, classesOnString.size());
 	}
 	
 	@Test
 	public void whenAddingTwoClass(){
-		grouper.addClass("br.com.geraldoferraz.scanner.resolver.ExampleClass02");
-		grouper.addClass("br.com.geraldoferraz.scanner.resolver.ExampleClass03");
+		grouper.addClass("br.com.geraldoferraz.scanyourpath.resolver.ExampleClass02");
+		grouper.addClass("br.com.geraldoferraz.scanyourpath.resolver.ExampleClass03");
 		
 		Set<Class<?>> classesOnString = grouper.getClassesOnString();
 		assertEquals(2, classesOnString.size());
@@ -85,8 +85,8 @@ public class ClassGrouperTest extends TestBase {
 	
 	@Test
 	public void whenAddingTheSameClassTwice(){
-		grouper.addClass("br.com.geraldoferraz.scanner.resolver.ExampleClass04");
-		grouper.addClass("br.com.geraldoferraz.scanner.resolver.ExampleClass04");
+		grouper.addClass("br.com.geraldoferraz.scanyourpath.resolver.ExampleClass04");
+		grouper.addClass("br.com.geraldoferraz.scanyourpath.resolver.ExampleClass04");
 		
 		Set<Class<?>> classesOnString = grouper.getClassesOnString();
 		assertEquals(1, classesOnString.size());
