@@ -35,10 +35,10 @@ public class LoaderUtil {
 	}
 
 	private void createMocks() {
-
-		rootPath = "home/workspace/project";
-		defaultPackage = "/br/com/geraldo";
 		separator = System.getProperty("file.separator");
+
+		rootPath = "home"+separator+"workspace"+separator+"project";
+		defaultPackage = ""+separator+"br"+separator+"com"+separator+"geraldo";
 
 		rootFolder = mock(File.class);
 		clazz = mock(File.class);
