@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import br.com.geraldoferraz.scanyourpath.exception.NoPackageException;
 import br.com.geraldoferraz.scanyourpath.searches.loaders.ClassPathLoader;
 import br.com.geraldoferraz.scanyourpath.searches.loaders.ClassPathLoaderTypes;
 
@@ -23,7 +24,7 @@ public class ClassPathResolver {
 	private ClassPathLoader classPathLoader = ClassPathLoaderTypes.folder();
 	private JavaClassPathResolver javaClassPathResolver;
 
-	public static ClassPathResolver getInstance(JavaClassPathResolver javaClassPathResolver) {
+	public static ClassPathResolver newInstance(JavaClassPathResolver javaClassPathResolver) {
 		resolver.setJavaClassPathResolver(javaClassPathResolver);
 		return resolver;
 	}
@@ -104,9 +105,13 @@ public class ClassPathResolver {
 
 	private void sortByPackage(Set<String> classeByName) {
 		for (String className : classeByName) {
-			String packageName = extractPackageNameFromFullQualifiedName(className);
-			verifyThatPackageAlreadyExists(packageName);
-			classesPerPackage.get(packageName).addClass(className);
+			try{
+				String packageName = extractPackageNameFromFullQualifiedName(className);
+				verifyThatPackageAlreadyExists(packageName);
+				classesPerPackage.get(packageName).addClass(className);
+			}catch(NoPackageException e){
+				
+			}
 		}
 	}
 

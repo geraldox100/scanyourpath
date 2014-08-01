@@ -20,7 +20,7 @@ public class Scanner {
 
 	private SearchType searchType;
 
-	private ClassPathResolver resolver = ClassPathResolver.getInstance(new JavaClassPathResolver());
+	private ClassPathResolver resolver = ClassPathResolver.newInstance(new JavaClassPathResolver());
 
 	public Scanner allClasses(Argument argument) {
 		searchType = new SearchByArguments(argument);

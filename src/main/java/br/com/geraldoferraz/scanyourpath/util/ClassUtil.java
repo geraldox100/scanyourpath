@@ -6,7 +6,11 @@ import static br.com.geraldoferraz.scanyourpath.util.ValidationUtil.emptyStringV
 import java.io.File;
 import java.util.jar.JarEntry;
 
+import br.com.geraldoferraz.scanyourpath.exception.NoPackageException;
+
 public final class ClassUtil {
+	
+	private static String separator = System.getProperty("file.separator");
 
 	private ClassUtil() {
 	}
@@ -31,7 +35,7 @@ public final class ClassUtil {
 	public static String getFullQualifiedName(File file) {
 		 argumentValidation(file);
 
-		String absolutePath = file.getAbsolutePath().replace(System.getProperty("file.separator"), ".").substring(1);
+		String absolutePath = file.getAbsolutePath().replace(separator, ".").substring(1);
 		String result = removeClassFromString(absolutePath);
 
 		return result;
@@ -40,7 +44,7 @@ public final class ClassUtil {
 	public static String getFullQualifiedName(JarEntry jarEntry) {
 		argumentValidation(jarEntry);
 
-		String replace = jarEntry.getName().replace(System.getProperty("file.separator"), ".");
+		String replace = jarEntry.getName().replace(separator, ".");
 		String result = removeClassFromString(replace);
 		return result;
 	}
@@ -53,14 +57,14 @@ public final class ClassUtil {
 
 	private static void chckeThatClassContainsPackage(String className) {
 		if(!className.contains(".")){
-			throw new IllegalArgumentException("Class "+className+" has no package");
+			throw new NoPackageException("Class "+className+" has no package");
 		}
 	}
 
 	public static String removeDirectory(String fullName, String folderToRemove) {
 		emptyStringValidation(fullName);
 		emptyStringValidation(folderToRemove);
-		folderToRemove = folderToRemove.replace(System.getProperty("file.separator"), ".").substring(1) + ".";
+		folderToRemove = folderToRemove.replace(separator, ".").substring(1) + ".";
 		fullName = fullName.replace(folderToRemove, "");
 		return fullName;
 	}

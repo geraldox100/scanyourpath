@@ -165,9 +165,4 @@ public class ClassUtilTest extends TestBase {
 		assertEquals("File", ClassUtil.removeDirectory("home.classes.geraldo.File", separator+"home"+separator+"classes"+separator+"geraldo"));
 	}
 	
-	@Test
-	public void whenClassDoesNotHavePackage(){
-		
-	}
-
 }
