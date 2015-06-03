@@ -6,19 +6,15 @@ import static org.mockito.Mockito.when;
 import java.io.File;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 
 import net.vidageek.mirror.dsl.Mirror;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.powermock.api.mockito.PowerMockito;
 import org.powermock.core.classloader.annotations.PrepareForTest;
-import org.powermock.modules.junit4.PowerMockRunner;
 
 import br.com.geraldoferraz.scanyourpath.TestBase;
 import br.com.geraldoferraz.scanyourpath.searches.loaders.ClassPathLoader;

@@ -8,7 +8,9 @@ public class JavaClassPathResolver {
 	private URL[] URLs;
 
 	public JavaClassPathResolver() {
-		URLs = ((URLClassLoader) Thread.currentThread().getContextClassLoader()).getURLs();
+		ClassLoader contextClassLoader = this.getClass().getClassLoader();
+		URLClassLoader urlClassLoader = (URLClassLoader) contextClassLoader;
+		URLs = urlClassLoader.getURLs();
 	}
 	
 	public URL[] getClassPathUrl(){
