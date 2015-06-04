@@ -14,7 +14,6 @@ public class ImplementsArgument implements Argument {
 		this.interfacee = interfacee;
 	}
 
-	@Override
 	public boolean validate(Class<?> clazz) {
 		argumentValidation(clazz);
 		Class<?>[] interfaces = clazz.getInterfaces();

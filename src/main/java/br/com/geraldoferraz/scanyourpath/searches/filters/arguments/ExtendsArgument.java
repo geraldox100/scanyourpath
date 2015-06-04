@@ -11,7 +11,6 @@ public class ExtendsArgument implements Argument {
 		this.clazz = clazz;
 	}
 
-	@Override
 	public boolean validate(Class<?> clazz) {
 		argumentValidation(clazz);
 		if (!clazz.isAnnotation())

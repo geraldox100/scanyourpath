@@ -23,12 +23,10 @@ class MyJarIterator implements Iterator<JarEntry> {
 		}
 	}
 
-	@Override
 	public boolean hasNext() {
 		return next != null;
 	}
 
-	@Override
 	public JarEntry next() {
 		argumentValidation(next);
 		try {
@@ -40,7 +38,6 @@ class MyJarIterator implements Iterator<JarEntry> {
 		}
 	}
 
-	@Override
 	public void remove() {
 		throw new RuntimeException("Not to be used");
 	}

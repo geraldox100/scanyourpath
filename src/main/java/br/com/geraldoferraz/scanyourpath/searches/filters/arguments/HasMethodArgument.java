@@ -16,7 +16,6 @@ public class HasMethodArgument implements Argument {
 		this.methodName = methodName;
 	}
 
-	@Override
 	public boolean validate(Class<?> clazz) {
 		argumentValidation(clazz);
 

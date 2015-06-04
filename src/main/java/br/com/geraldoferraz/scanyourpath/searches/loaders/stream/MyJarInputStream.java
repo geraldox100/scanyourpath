@@ -22,7 +22,6 @@ public class MyJarInputStream implements Iterable<JarEntry> {
 		}
 	}
 
-	@Override
 	public Iterator<JarEntry> iterator() {
 		stateValidation(jarInputStream);
 		return new MyJarIterator(jarInputStream);

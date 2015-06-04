@@ -22,7 +22,6 @@ class FullLoader implements ClassPathLoader {
 	}
 
 
-	@Override
 	public final Set<String> resolveClassName(List<File> classPath) {
 		argumentValidation(classPath);
 		Set<String> classes = new HashSet<String>();

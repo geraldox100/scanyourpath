@@ -12,7 +12,6 @@ import java.util.Set;
 
 class BinLoader implements ClassPathLoader {
 
-	@Override
 	public Set<String> resolveClassName(List<File> classPath) {
 		validateArguments(classPath);
 		Set<String> classes = new HashSet<String>();

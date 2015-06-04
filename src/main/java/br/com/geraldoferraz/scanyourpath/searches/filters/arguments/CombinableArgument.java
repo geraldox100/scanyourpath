@@ -13,7 +13,6 @@ public final class CombinableArgument implements Argument {
 		this.firstArgument = argument;
 	}
 
-	@Override
 	public final boolean validate(Class<?> clazz) {
 		argumentValidation(clazz);
 		if (nextArgument != null) {

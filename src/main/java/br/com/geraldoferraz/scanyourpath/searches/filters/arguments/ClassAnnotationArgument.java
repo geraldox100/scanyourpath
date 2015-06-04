@@ -13,7 +13,6 @@ public final class ClassAnnotationArgument implements Argument {
 		this.annotation = annotation;
 	}
 
-	@Override
 	public boolean validate(Class<?> clazz) {
 		argumentValidation(clazz);
 		return clazz.isAnnotationPresent(this.annotation);

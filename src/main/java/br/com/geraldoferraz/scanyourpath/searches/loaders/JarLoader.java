@@ -15,7 +15,6 @@ import br.com.geraldoferraz.scanyourpath.searches.loaders.stream.MyJarInputStrea
 
 class JarLoader implements ClassPathLoader {
 	
-	@Override
 	public Set<String> resolveClassName(List<File> classPath) {
 		argumentValidation(classPath);
 		Set<String> classes = new HashSet<String>();

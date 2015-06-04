@@ -14,7 +14,6 @@ public final class MethodAnnotationArgument implements Argument {
 		this.annotation = annotation;
 	}
 
-	@Override
 	public boolean validate(Class<?> clazz) {
 		argumentValidation(clazz);
 		try {

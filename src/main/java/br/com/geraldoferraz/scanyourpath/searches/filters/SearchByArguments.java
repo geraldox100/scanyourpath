@@ -15,7 +15,6 @@ public final class SearchByArguments implements SearchType {
 		this.argument = argument;
 	}
 
-	@Override
 	public Set<Class<?>> search(Set<Class<?>> classes) {
 		argumentValidation(classes);
 		Set<Class<?>> retorno = new HashSet<Class<?>>();

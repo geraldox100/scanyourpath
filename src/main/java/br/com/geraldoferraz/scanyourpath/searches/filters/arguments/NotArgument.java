@@ -11,7 +11,6 @@ public class NotArgument implements Argument {
 		this.argument = argument;
 	}
 
-	@Override
 	public boolean validate(Class<?> clazz) {
 		return !argument.validate(clazz);
 	}
