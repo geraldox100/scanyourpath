@@ -19,6 +19,7 @@ import br.com.geraldoferraz.scanyourpath.util.EmptyStringException;
 public class ClassUtilTest extends TestBase {
 
 	private String separator = System.getProperty("file.separator");
+	private String windowSeparator = "/";
 	@Mock
 	private File notFile;
 
@@ -27,6 +28,9 @@ public class ClassUtilTest extends TestBase {
 
 	@Mock
 	private File classFile;
+	
+	@Mock
+	private File windowClassFile;
 
 	private File nullFile = null;
 
@@ -50,6 +54,10 @@ public class ClassUtilTest extends TestBase {
 		when(classFile.isFile()).thenReturn(true);
 		when(classFile.getName()).thenReturn("File.class");
 		when(classFile.getAbsolutePath()).thenReturn(separator+"home"+separator+"classes"+separator+"geraldo"+separator+"File.class");
+		
+		when(windowClassFile.isFile()).thenReturn(true);
+		when(windowClassFile.getName()).thenReturn("File.class");
+		when(windowClassFile.getAbsolutePath()).thenReturn(windowSeparator+"home"+windowSeparator+"classes"+windowSeparator+"geraldo"+windowSeparator+"File.class");
 
 		when(notClassJarEntry.getName()).thenReturn("home"+separator+"classes"+separator+"geraldo"+separator+"File.txt");
 		when(classJarEntry.getName()).thenReturn("home"+separator+"classes"+separator+"geraldo"+separator+"File.class");
@@ -108,6 +116,11 @@ public class ClassUtilTest extends TestBase {
 	@Test
 	public void whenGetFullQualifiedNamePassingAClassFile() {
 		assertEquals("home.classes.geraldo.File",ClassUtil.getFullQualifiedName(classFile));
+	}
+	
+	@Test
+	public void whenGetFullQualifiedNamePassingAClassFileWithWindowsSeparator() {
+		assertEquals("home.classes.geraldo.File",ClassUtil.getFullQualifiedName(windowClassFile));
 	}
 
 	@Test(expected = IllegalArgumentException.class)

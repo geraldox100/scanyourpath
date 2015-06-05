@@ -44,9 +44,16 @@ public final class ClassUtil {
 	public static String getFullQualifiedName(JarEntry jarEntry) {
 		argumentValidation(jarEntry);
 
-		String replace = jarEntry.getName().replace(separator, ".");
+		String replace = replaceSeparatorByPoint(jarEntry.getName());
 		String result = removeClassFromString(replace);
 		return result;
+	}
+
+	private static String replaceSeparatorByPoint(String name) {
+		name = name.replace(separator, ".");
+		name = name.replace("/", ".");
+		name = name.replace("\\", ".");
+		return name;
 	}
 
 	public static String extractPackageNameFromFullQualifiedName(String className) {
