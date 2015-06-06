@@ -8,6 +8,7 @@ import static br.com.geraldoferraz.scanyourpath.searches.filters.arguments.Searc
 import static br.com.geraldoferraz.scanyourpath.searches.filters.arguments.SearchArguments.not;
 import static br.com.geraldoferraz.scanyourpath.searches.filters.arguments.SearchArguments.thatExtends;
 import static br.com.geraldoferraz.scanyourpath.searches.filters.arguments.SearchArguments.thatImplements;
+import static br.com.geraldoferraz.scanyourpath.searches.filters.arguments.SearchArguments.withName;
 import static org.hamcrest.core.IsInstanceOf.instanceOf;
 import static org.hamcrest.core.IsNull.notNullValue;
 import static org.junit.Assert.assertThat;
@@ -33,6 +34,7 @@ public class SearchArgumentsTest extends TestBase {
 		assertThat(thatImplements(Argument.class), notNullValue());
 		assertThat(not(annotedOnFieldWith(FieldLevelAnnotation.class)), notNullValue());
 		assertThat(hasMethod("ANY"), notNullValue());
+		assertThat(withName("ANY"), notNullValue());
 	}
 
 	@Test
@@ -45,6 +47,7 @@ public class SearchArgumentsTest extends TestBase {
 		assertThat(thatExtends(Object.class), instanceOf(CombinableArgument.class));
 		assertThat(thatImplements(Argument.class), instanceOf(CombinableArgument.class));
 		assertThat(hasMethod("ANY"), instanceOf(CombinableArgument.class));
+		assertThat(withName("ANY"), instanceOf(CombinableArgument.class));
 	}
 
 	@Test
@@ -56,6 +59,7 @@ public class SearchArgumentsTest extends TestBase {
 		assertThat(thatExtends(Object.class), instanceOf(Argument.class));
 		assertThat(thatImplements(Argument.class), instanceOf(Argument.class));
 		assertThat(hasMethod("ANY"), instanceOf(Argument.class));
+		assertThat(withName("ANY"), instanceOf(Argument.class));
 	}
 	
 	@Test(expected=IllegalArgumentException.class)
@@ -101,6 +105,16 @@ public class SearchArgumentsTest extends TestBase {
 	@Test(expected=EmptyStringException.class)
 	public void passingAnEmptyStringToHasMethod() {
 		hasMethod("");
+	}
+	
+	@Test(expected=EmptyStringException.class)
+	public void passingAnNullArgumentToWithName() {
+		withName(null);
+	}
+	
+	@Test(expected=EmptyStringException.class)
+	public void passingAnEmptyStringToWithName() {
+		withName("");
 	}
 	
 

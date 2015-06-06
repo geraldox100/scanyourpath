@@ -34,4 +34,8 @@ public final class SearchArguments {
 	public static final CombinableArgument hasMethod(String method) {
 		return new CombinableArgument(new HasMethodArgument(method));
 	}
+	
+	public static final CombinableArgument withName(String className) {
+		return new CombinableArgument(new ClassNameIs(className));
+	}
 }
