@@ -1,6 +1,6 @@
 ScanYourPath, a DSL java library for classpath scanning.
 ==
---
+
 
 I went through many situations where I needed to search classes dynamically, Hibernate and GAE are good examples.  
 I looked up and found some APIs, but didn't like how they were implemented. So I thought it would be cool to make my own library that would help in this task.
