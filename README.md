@@ -3,7 +3,24 @@ ScanYourPath, a DSL java library for classpath scanning.
 --
 
 I went through many situations where I needed to search classes dynamically, Hibernate and GAE are good examples.  
-I looked up and found some APIs, but didn't like how they were implemented. So I thought it would be cool to make my own library that would help in this task.  
+I looked up and found some APIs, but didn't like how they were implemented. So I thought it would be cool to make my own library that would help in this task.
+
+Usage
+--
+
+Maven dependency
+
+To use module on Maven-based projects, use following dependency:
+
+````
+<dependency>
+	<groupId>br.com.geraldoferraz</groupId>
+	<artifactId>scanyourpath</artifactId>
+	<version>0.0.3</version>
+</dependency>
+````
+(or whatever version is most up-to-date at the moment)
+
 
 Getting Started
 --
@@ -98,7 +115,7 @@ Maybe if we pass the name we want our class to end with as an argument.
 ````
 Set<Class<?>> classes = scan.allClasses(thatNameEndsWith("Test")).exactlyIn("br.com.test");
 
-public Argument thatNameEndsWithTest(String name){
+public Argument thatNameEndsWith(String name){
     return new NameEndsWithTest(name);
 }
 ````
