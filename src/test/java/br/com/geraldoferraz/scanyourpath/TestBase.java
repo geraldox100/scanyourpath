@@ -2,18 +2,12 @@ package br.com.geraldoferraz.scanyourpath;
 
 import static org.junit.Assert.assertEquals;
 
-import org.junit.Before;
 import org.junit.Test;
-import org.mockito.MockitoAnnotations;
+import org.junit.runner.RunWith;
+import org.mockito.runners.MockitoJUnitRunner;
 
-//@RunWith(MockitoJUnitRunner.class)
+@RunWith(MockitoJUnitRunner.class)
 public class TestBase {
-	
-	@Before
-	public final void testBaseBefore(){
-		MockitoAnnotations.initMocks(this);
-	}
-	
 	
 	@Test
 	public void justMavenPass(){

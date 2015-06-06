@@ -1,6 +1,6 @@
 package br.com.geraldoferraz.scanyourpath.searches.filters.arguments;
 
-import static junit.framework.Assert.assertSame;
+import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.never;
@@ -13,12 +13,11 @@ import org.junit.Test;
 import org.mockito.Mock;
 
 import br.com.geraldoferraz.scanyourpath.TestBase;
-import br.com.geraldoferraz.scanyourpath.searches.filters.arguments.Argument;
-import br.com.geraldoferraz.scanyourpath.searches.filters.arguments.CombinableArgument;
 
 public class CombinableArgumentTest extends TestBase {
 
 	private CombinableArgument combinableArgument;
+	
 	@Mock
 	private Argument firstArgument;
 	@Mock
