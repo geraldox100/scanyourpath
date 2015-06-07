@@ -134,3 +134,22 @@ public boolean validate(Class<?> clazz) {
   return clazz.getSimpleName().endsWith(endsWith);
 }
 ````
+Advanced Features
+==
+You can also combine arguments in order to 	obtain a more specific search.
+````
+Set<Class<?>> classes = scan.allClasses(annotedWith(Entity.class).and(havingMethodWithName("equals"))).startingIn("br.com.test");
+````
+You will notice that in our previus example (thatNameEndsWith) this is not possible due to the Argument interface is too simple and has no way to allow the combination to other arguments. But not to worry, ScanYourPath has a solution. All you have to do is decorate your own argument with a CombinableArgument class.
+````
+Set<Class<?>> classes = scan.allClasses(thatNameEndsWith("Test").or(thatNameStartsWith("Test"))).exactlyIn("br.com.test");
+
+public CombinableArgument thatNameEndsWith(String name){
+    return new CombinableArgument(new NameEndsWithTest(name));
+}
+
+public CombinableArgument thatNameStartsWith(String name){
+    return new CombinableArgument(new NameStartsWithTest(name));
+}
+````
+The CombinableArgument class allows you to combine arguments using the logical operators "And" and "Or".
