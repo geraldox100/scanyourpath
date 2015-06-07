@@ -9,9 +9,9 @@ import org.mockito.Mock;
 
 import br.com.geraldoferraz.scanyourpath.TestBase;
 import br.com.geraldoferraz.scanyourpath.searches.filters.arguments.Argument;
-import br.com.geraldoferraz.scanyourpath.searches.filters.arguments.NotArgument;
+import br.com.geraldoferraz.scanyourpath.searches.filters.arguments.NoDontDoesnttArgument;
 
-public class NotArgumentTest extends TestBase {
+public class NoDontDoesnttArgumentTest extends TestBase {
 	
 	@Mock
 	private Argument argument;
@@ -27,13 +27,13 @@ public class NotArgumentTest extends TestBase {
 	@Test
 	public void whenPassAnArgumentThatReturnsTrueToNotArgument(){
 		when(argument.validate(clazz)).thenReturn(true);
-		assertFalse(new NotArgument(argument).validate(clazz));
+		assertFalse(new NoDontDoesnttArgument(argument).validate(clazz));
 	}
 	
 	@Test
 	public void whenPassAnArgumentThatReturnsFalseToNotArgument(){
 		when(argument.validate(clazz)).thenReturn(false);
-		assertTrue(new NotArgument(argument).validate(clazz));
+		assertTrue(new NoDontDoesnttArgument(argument).validate(clazz));
 	}
 	
 	

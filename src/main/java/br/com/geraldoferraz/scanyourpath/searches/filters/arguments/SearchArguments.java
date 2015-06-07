@@ -1,8 +1,8 @@
 package br.com.geraldoferraz.scanyourpath.searches.filters.arguments;
 
 
-import static br.com.geraldoferraz.scanyourpath.util.StringComparator.STARTS_WITH;
-import static br.com.geraldoferraz.scanyourpath.util.StringComparator.ENDS_WITH;
+import static br.com.geraldoferraz.scanyourpath.util.strings.StringComparator.STARTS_WITH;
+import static br.com.geraldoferraz.scanyourpath.util.strings.StringComparator.ENDS_WITH;
 
 import java.lang.annotation.Annotation;
 
@@ -33,7 +33,15 @@ public final class SearchArguments {
 	}
 	
 	public static final CombinableArgument not(Argument argument) {
-		return new CombinableArgument(new NotArgument(argument));
+		return new CombinableArgument(new NoDontDoesnttArgument(argument));
+	}
+	
+	public static final CombinableArgument dont(Argument argument) {
+		return new CombinableArgument(new NoDontDoesnttArgument(argument));
+	}
+	
+	public static final CombinableArgument doesnt(Argument argument) {
+		return new CombinableArgument(new NoDontDoesnttArgument(argument));
 	}
 	
 	public static final CombinableArgument havingMethodWithName(String methodName) {

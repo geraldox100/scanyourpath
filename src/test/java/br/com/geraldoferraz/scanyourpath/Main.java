@@ -33,26 +33,18 @@ public class Main {
 		print(classes);
 		classes = scan.allClasses(havingMethodAnnotedWith(MethodLevelAnnotation.class)).exactlyIn(exactlyIn);
 		print(classes);
-		classes = scan.allClasses(
-				annotedWith(ClassLevelAnnotation.class).and(havingMethodAnnotedWith(MethodLevelAnnotation.class)))
-				.exactlyIn(exactlyIn);
+		classes = scan.allClasses(annotedWith(ClassLevelAnnotation.class).and(havingMethodAnnotedWith(MethodLevelAnnotation.class))).exactlyIn(exactlyIn);
 		print(classes);
-		classes = scan.allClasses(
-				annotedWith(ClassLevelAnnotation.class).or(havingMethodAnnotedWith(MethodLevelAnnotation.class)))
-				.exactlyIn(exactlyIn);
+		classes = scan.allClasses(annotedWith(ClassLevelAnnotation.class).or(havingMethodAnnotedWith(MethodLevelAnnotation.class))).exactlyIn(exactlyIn);
 		print(classes);
 		classes = scan.allClasses(annotedWith(ClassLevelAnnotation.class)).startingIn(startingIn);
 		print(classes);
 		classes = scan.allClasses(havingMethodAnnotedWith(MethodLevelAnnotation.class)).startingIn(startingIn);
 		print(classes);
-		classes = scan.allClasses(
-				annotedWith(ClassLevelAnnotation.class).and(havingMethodAnnotedWith(MethodLevelAnnotation.class)))
-				.startingIn(startingIn);
+		classes = scan.allClasses(annotedWith(ClassLevelAnnotation.class).and(havingMethodAnnotedWith(MethodLevelAnnotation.class))).startingIn(startingIn);
 		print(classes);
 
-		classes = scan.allClasses(
-				annotedWith(ClassLevelAnnotation.class).or(havingMethodAnnotedWith(MethodLevelAnnotation.class)))
-				.startingIn(startingIn);
+		classes = scan.allClasses(annotedWith(ClassLevelAnnotation.class).or(havingMethodAnnotedWith(MethodLevelAnnotation.class))).startingIn(startingIn);
 		print(classes);
 		classes = scan.allClasses().exactlyIn(exactlyIn);
 		print(classes);

@@ -1,12 +1,14 @@
-package br.com.geraldoferraz.scanyourpath.util;
+package br.com.geraldoferraz.scanyourpath.util.strings;
 
-import static br.com.geraldoferraz.scanyourpath.util.StringComparator.EXACTLY;
-import static br.com.geraldoferraz.scanyourpath.util.StringComparator.ENDS_WITH;
-import static br.com.geraldoferraz.scanyourpath.util.StringComparator.STARTS_WITH;
+import static br.com.geraldoferraz.scanyourpath.util.strings.StringComparator.ENDS_WITH;
+import static br.com.geraldoferraz.scanyourpath.util.strings.StringComparator.EXACTLY;
+import static br.com.geraldoferraz.scanyourpath.util.strings.StringComparator.STARTS_WITH;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
+
+import br.com.geraldoferraz.scanyourpath.util.EmptyStringException;
 
 public class StringComparatorTest {
 	

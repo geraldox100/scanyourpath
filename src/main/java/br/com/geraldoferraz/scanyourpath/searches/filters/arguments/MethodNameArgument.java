@@ -5,7 +5,7 @@ import static br.com.geraldoferraz.scanyourpath.util.ValidationUtil.emptyStringV
 
 import java.lang.reflect.Method;
 
-import br.com.geraldoferraz.scanyourpath.util.StringComparator;
+import br.com.geraldoferraz.scanyourpath.util.strings.StringComparator;
 
 public class MethodNameArgument implements Argument {
 

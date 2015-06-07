@@ -1,4 +1,4 @@
-package br.com.geraldoferraz.scanyourpath.util;
+package br.com.geraldoferraz.scanyourpath.util.strings;
 
 import static br.com.geraldoferraz.scanyourpath.util.ValidationUtil.emptyStringValidation;
 

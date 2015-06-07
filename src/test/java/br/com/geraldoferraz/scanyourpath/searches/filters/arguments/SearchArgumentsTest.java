@@ -9,6 +9,8 @@ import static br.com.geraldoferraz.scanyourpath.searches.filters.arguments.Searc
 import static br.com.geraldoferraz.scanyourpath.searches.filters.arguments.SearchArguments.havingMethodWithName;
 import static br.com.geraldoferraz.scanyourpath.searches.filters.arguments.SearchArguments.namedWith;
 import static br.com.geraldoferraz.scanyourpath.searches.filters.arguments.SearchArguments.not;
+import static br.com.geraldoferraz.scanyourpath.searches.filters.arguments.SearchArguments.dont;
+import static br.com.geraldoferraz.scanyourpath.searches.filters.arguments.SearchArguments.doesnt;
 import static br.com.geraldoferraz.scanyourpath.searches.filters.arguments.SearchArguments.thatExtends;
 import static br.com.geraldoferraz.scanyourpath.searches.filters.arguments.SearchArguments.thatImplements;
 import static br.com.geraldoferraz.scanyourpath.searches.filters.arguments.SearchArguments.thatNameEndsWith;
@@ -37,6 +39,8 @@ public class SearchArgumentsTest extends TestBase {
 		assertThat(thatExtends(Object.class), notNullValue());
 		assertThat(thatImplements(Argument.class), notNullValue());
 		assertThat(not(havingFieldAnnotedWith(FieldLevelAnnotation.class)), notNullValue());
+		assertThat(dont(havingFieldAnnotedWith(FieldLevelAnnotation.class)), notNullValue());
+		assertThat(doesnt(havingFieldAnnotedWith(FieldLevelAnnotation.class)), notNullValue());
 		assertThat(havingMethodWithName("ANY"), notNullValue());
 		assertThat(havingMethodNameStartingWith("ANY"), notNullValue());
 		assertThat(havingMethodNameEndingWith("ANY"), notNullValue());
@@ -52,6 +56,8 @@ public class SearchArgumentsTest extends TestBase {
 		assertThat(havingFieldAnnotedWith(FieldLevelAnnotation.class), instanceOf(CombinableArgument.class));
 		assertThat(havingConstructorAnnotedWith(ConstructorLevelAnnotation.class), instanceOf(CombinableArgument.class));
 		assertThat(not(havingFieldAnnotedWith(FieldLevelAnnotation.class)), instanceOf(CombinableArgument.class));
+		assertThat(dont(havingFieldAnnotedWith(FieldLevelAnnotation.class)), instanceOf(CombinableArgument.class));
+		assertThat(doesnt(havingFieldAnnotedWith(FieldLevelAnnotation.class)), instanceOf(CombinableArgument.class));
 		assertThat(thatExtends(Object.class), instanceOf(CombinableArgument.class));
 		assertThat(thatImplements(Argument.class), instanceOf(CombinableArgument.class));
 		assertThat(havingMethodWithName("ANY"), instanceOf(CombinableArgument.class));
@@ -75,81 +81,90 @@ public class SearchArgumentsTest extends TestBase {
 		assertThat(havingMethodNameEndingWith("ANY"), instanceOf(Argument.class));
 		assertThat(namedWith("ANY"), instanceOf(Argument.class));
 	}
-	
-	@Test(expected=IllegalArgumentException.class)
+
+	@Test(expected = IllegalArgumentException.class)
 	public void passingAnNullArgumentToAnnotedWith() {
 		annotedWith(null);
 	}
-	
-	@Test(expected=IllegalArgumentException.class)
+
+	@Test(expected = IllegalArgumentException.class)
 	public void passingAnNullArgumentToHavingMethodAnnotedWith() {
 		havingMethodAnnotedWith(null);
 	}
-	
-	@Test(expected=IllegalArgumentException.class)
+
+	@Test(expected = IllegalArgumentException.class)
 	public void passingAnNullArgumentToHavingFieldAnnotedWith() {
 		havingFieldAnnotedWith(null);
 	}
-	
-	@Test(expected=IllegalArgumentException.class)
+
+	@Test(expected = IllegalArgumentException.class)
 	public void passingAnNullArgumentToHavingConstructorAnnotedWith() {
 		havingConstructorAnnotedWith(null);
 	}
-	
-	@Test(expected=IllegalArgumentException.class)
+
+	@Test(expected = IllegalArgumentException.class)
 	public void passingAnNullArgumentToThatExtends() {
 		thatExtends(null);
 	}
-	
-	@Test(expected=IllegalArgumentException.class)
+
+	@Test(expected = IllegalArgumentException.class)
 	public void passingAnNullArgumentToThatImplements() {
 		thatImplements(null);
 	}
-	
-	@Test(expected=IllegalArgumentException.class)
+
+	@Test(expected = IllegalArgumentException.class)
 	public void passingAnNullArgumentToNot() {
 		not(null);
 	}
-	
-	@Test(expected=EmptyStringException.class)
+
+	@Test(expected = IllegalArgumentException.class)
+	public void passingAnNullArgumentToDont() {
+		dont(null);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void passingAnNullArgumentToDoesent() {
+		doesnt(null);
+	}
+
+	@Test(expected = EmptyStringException.class)
 	public void passingAnNullArgumentToHavingMethodWithName() {
 		havingMethodWithName(null);
 	}
-	
-	@Test(expected=EmptyStringException.class)
+
+	@Test(expected = EmptyStringException.class)
 	public void passingAnNullArgumentToHavingMethodNameStartingWith() {
 		havingMethodNameStartingWith(null);
 	}
-	
-	@Test(expected=EmptyStringException.class)
+
+	@Test(expected = EmptyStringException.class)
 	public void passingAnNullArgumentToHavingMethodNameEndingWith() {
 		havingMethodNameEndingWith(null);
 	}
-	
-	@Test(expected=EmptyStringException.class)
+
+	@Test(expected = EmptyStringException.class)
 	public void passingAnEmptyStringToHavingMethodWithName() {
 		havingMethodWithName("");
 	}
-	
-	@Test(expected=EmptyStringException.class)
+
+	@Test(expected = EmptyStringException.class)
 	public void passingAnNullArgumentToNamedWith() {
 		namedWith(null);
 	}
-	
-	@Test(expected=EmptyStringException.class)
+
+	@Test(expected = EmptyStringException.class)
 	public void passingAnEmptyStringToNamedWith() {
 		namedWith("");
 	}
-	
-	@Test(expected=EmptyStringException.class)
+
+	@Test(expected = EmptyStringException.class)
 	public void passingAnNullArgumentToThatNameStartsWith() {
 		thatNameStartsWith(null);
 	}
-	
-	@Test(expected=EmptyStringException.class)
+
+	@Test(expected = EmptyStringException.class)
 	public void passingAnEmptyStringToThatNameStartsWith() {
 		thatNameStartsWith("");
 	}
-	
 
 }
