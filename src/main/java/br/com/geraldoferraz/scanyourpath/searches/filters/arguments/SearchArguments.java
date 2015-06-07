@@ -1,7 +1,8 @@
 package br.com.geraldoferraz.scanyourpath.searches.filters.arguments;
 
-import static br.com.geraldoferraz.scanyourpath.searches.filters.arguments.HasMethodArgument.Where.LEFT;
-import static br.com.geraldoferraz.scanyourpath.searches.filters.arguments.HasMethodArgument.Where.RIGHT;
+
+import static br.com.geraldoferraz.scanyourpath.util.StringComparator.STARTS_WITH;
+import static br.com.geraldoferraz.scanyourpath.util.StringComparator.ENDS_WITH;
 
 import java.lang.annotation.Annotation;
 
@@ -35,19 +36,27 @@ public final class SearchArguments {
 		return new CombinableArgument(new NotArgument(argument));
 	}
 	
-	public static final CombinableArgument havingMethodWithName(String method) {
-		return new CombinableArgument(new HasMethodArgument(method));
+	public static final CombinableArgument havingMethodWithName(String methodName) {
+		return new CombinableArgument(new MethodNameArgument(methodName));
 	}
 	
-	public static final CombinableArgument havingMethodNameStartingWith(String method) {
-		return new CombinableArgument(new HasMethodArgument(method,LEFT));
+	public static final CombinableArgument havingMethodNameStartingWith(String methodName) {
+		return new CombinableArgument(new MethodNameArgument(methodName,STARTS_WITH));
 	}
 	
-	public static final CombinableArgument havingMethodNameEndingWith(String method) {
-		return new CombinableArgument(new HasMethodArgument(method,RIGHT));
+	public static final CombinableArgument havingMethodNameEndingWith(String methodName) {
+		return new CombinableArgument(new MethodNameArgument(methodName,ENDS_WITH));
 	}
 	
 	public static final CombinableArgument namedWith(String className) {
-		return new CombinableArgument(new ClassNameIs(className));
+		return new CombinableArgument(new ClassNameArgument(className));
+	}
+	
+	public static final CombinableArgument thatNameStartsWith(String method) {
+		return new CombinableArgument(new ClassNameArgument(method,STARTS_WITH));
+	}
+	
+	public static final CombinableArgument thatNameEndsWith(String method) {
+		return new CombinableArgument(new ClassNameArgument(method,ENDS_WITH));
 	}
 }

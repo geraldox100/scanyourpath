@@ -11,6 +11,8 @@ import static br.com.geraldoferraz.scanyourpath.searches.filters.arguments.Searc
 import static br.com.geraldoferraz.scanyourpath.searches.filters.arguments.SearchArguments.not;
 import static br.com.geraldoferraz.scanyourpath.searches.filters.arguments.SearchArguments.thatExtends;
 import static br.com.geraldoferraz.scanyourpath.searches.filters.arguments.SearchArguments.thatImplements;
+import static br.com.geraldoferraz.scanyourpath.searches.filters.arguments.SearchArguments.thatNameEndsWith;
+import static br.com.geraldoferraz.scanyourpath.searches.filters.arguments.SearchArguments.thatNameStartsWith;
 import static org.hamcrest.core.IsInstanceOf.instanceOf;
 import static org.hamcrest.core.IsNull.notNullValue;
 import static org.junit.Assert.assertThat;
@@ -39,6 +41,8 @@ public class SearchArgumentsTest extends TestBase {
 		assertThat(havingMethodNameStartingWith("ANY"), notNullValue());
 		assertThat(havingMethodNameEndingWith("ANY"), notNullValue());
 		assertThat(namedWith("ANY"), notNullValue());
+		assertThat(thatNameStartsWith("ANY"), notNullValue());
+		assertThat(thatNameEndsWith("ANY"), notNullValue());
 	}
 
 	@Test
@@ -54,6 +58,8 @@ public class SearchArgumentsTest extends TestBase {
 		assertThat(havingMethodNameStartingWith("ANY"), instanceOf(CombinableArgument.class));
 		assertThat(havingMethodNameEndingWith("ANY"), instanceOf(CombinableArgument.class));
 		assertThat(namedWith("ANY"), instanceOf(CombinableArgument.class));
+		assertThat(thatNameStartsWith("ANY"), instanceOf(CombinableArgument.class));
+		assertThat(thatNameEndsWith("ANY"), instanceOf(CombinableArgument.class));
 	}
 
 	@Test
@@ -133,6 +139,16 @@ public class SearchArgumentsTest extends TestBase {
 	@Test(expected=EmptyStringException.class)
 	public void passingAnEmptyStringToNamedWith() {
 		namedWith("");
+	}
+	
+	@Test(expected=EmptyStringException.class)
+	public void passingAnNullArgumentToThatNameStartsWith() {
+		thatNameStartsWith(null);
+	}
+	
+	@Test(expected=EmptyStringException.class)
+	public void passingAnEmptyStringToThatNameStartsWith() {
+		thatNameStartsWith("");
 	}
 	
 
