@@ -3,6 +3,9 @@ package br.com.geraldoferraz.scanyourpath.searches.filters.arguments;
 import static br.com.geraldoferraz.scanyourpath.searches.filters.arguments.SearchArguments.annotedWith;
 import static br.com.geraldoferraz.scanyourpath.searches.filters.arguments.SearchArguments.havingConstructorAnnotedWith;
 import static br.com.geraldoferraz.scanyourpath.searches.filters.arguments.SearchArguments.havingFieldAnnotedWith;
+import static br.com.geraldoferraz.scanyourpath.searches.filters.arguments.SearchArguments.havingFieldNameEndingWith;
+import static br.com.geraldoferraz.scanyourpath.searches.filters.arguments.SearchArguments.havingFieldNameStartingWith;
+import static br.com.geraldoferraz.scanyourpath.searches.filters.arguments.SearchArguments.havingFieldWithName;
 import static br.com.geraldoferraz.scanyourpath.searches.filters.arguments.SearchArguments.havingMethodAnnotedWith;
 import static br.com.geraldoferraz.scanyourpath.searches.filters.arguments.SearchArguments.havingMethodNameEndingWith;
 import static br.com.geraldoferraz.scanyourpath.searches.filters.arguments.SearchArguments.havingMethodNameStartingWith;
@@ -44,6 +47,9 @@ public class SearchArgumentsTest extends TestBase {
 		assertThat(havingMethodWithName("ANY"), notNullValue());
 		assertThat(havingMethodNameStartingWith("ANY"), notNullValue());
 		assertThat(havingMethodNameEndingWith("ANY"), notNullValue());
+		assertThat(havingFieldWithName("ANY"), notNullValue());
+		assertThat(havingFieldNameStartingWith("ANY"), notNullValue());
+		assertThat(havingFieldNameEndingWith("ANY"), notNullValue());
 		assertThat(namedWith("ANY"), notNullValue());
 		assertThat(thatNameStartsWith("ANY"), notNullValue());
 		assertThat(thatNameEndsWith("ANY"), notNullValue());
@@ -63,6 +69,9 @@ public class SearchArgumentsTest extends TestBase {
 		assertThat(havingMethodWithName("ANY"), instanceOf(CombinableArgument.class));
 		assertThat(havingMethodNameStartingWith("ANY"), instanceOf(CombinableArgument.class));
 		assertThat(havingMethodNameEndingWith("ANY"), instanceOf(CombinableArgument.class));
+		assertThat(havingFieldWithName("ANY"), instanceOf(CombinableArgument.class));
+		assertThat(havingFieldNameStartingWith("ANY"), instanceOf(CombinableArgument.class));
+		assertThat(havingFieldNameEndingWith("ANY"), instanceOf(CombinableArgument.class));
 		assertThat(namedWith("ANY"), instanceOf(CombinableArgument.class));
 		assertThat(thatNameStartsWith("ANY"), instanceOf(CombinableArgument.class));
 		assertThat(thatNameEndsWith("ANY"), instanceOf(CombinableArgument.class));
@@ -141,10 +150,50 @@ public class SearchArgumentsTest extends TestBase {
 	public void passingAnNullArgumentToHavingMethodNameEndingWith() {
 		havingMethodNameEndingWith(null);
 	}
+	
+	@Test(expected = EmptyStringException.class)
+	public void passingAnNullArgumentToHavingFieldWithName() {
+		havingFieldWithName(null);
+	}
+
+	@Test(expected = EmptyStringException.class)
+	public void passingAnNullArgumentToHavingFieldNameStartingWith() {
+		havingFieldNameStartingWith(null);
+	}
+
+	@Test(expected = EmptyStringException.class)
+	public void passingAnNullArgumentToHavingFieldNameEndingWith() {
+		havingFieldNameEndingWith(null);
+	}
 
 	@Test(expected = EmptyStringException.class)
 	public void passingAnEmptyStringToHavingMethodWithName() {
 		havingMethodWithName("");
+	}
+	
+	@Test(expected = EmptyStringException.class)
+	public void passingAnEmptyStringToHavingMethodNameStartingWith() {
+		havingMethodNameStartingWith("");
+	}
+	
+	@Test(expected = EmptyStringException.class)
+	public void passingAnEmptyStringToHavingMethodNameEndingWith() {
+		havingMethodNameEndingWith("");
+	}
+	
+	@Test(expected = EmptyStringException.class)
+	public void passingAnEmptyStringToHavingFieldWithName() {
+		havingFieldWithName("");
+	}
+	
+	@Test(expected = EmptyStringException.class)
+	public void passingAnEmptyStringToHavingMethodNameFieldWith() {
+		havingFieldNameStartingWith("");
+	}
+	
+	@Test(expected = EmptyStringException.class)
+	public void passingAnEmptyStringToHavingFieldNameEndingWith() {
+		havingFieldNameEndingWith("");
 	}
 
 	@Test(expected = EmptyStringException.class)

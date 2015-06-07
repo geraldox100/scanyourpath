@@ -13,11 +13,11 @@ import br.com.geraldoferraz.scanyourpath.util.EmptyStringException;
 
 public class MethodNameArgumentTest {
 	
-	private MethodNameArgument hasMethodArgument;
+	private MethodNameArgument methodNameArgument;
 	
 	@Before
 	public void before(){
-		hasMethodArgument = new MethodNameArgument("equals");
+		methodNameArgument = new MethodNameArgument("equals");
 	}
 	
 	@Test(expected=EmptyStringException.class)
@@ -32,7 +32,7 @@ public class MethodNameArgumentTest {
 	
 	@Test(expected=IllegalArgumentException.class)
 	public void whenPassingNullArgument(){
-		hasMethodArgument.validate(null);
+		methodNameArgument.validate(null);
 	}
 	
 	@Test

@@ -1,8 +1,8 @@
 package br.com.geraldoferraz.scanyourpath.searches.filters.arguments;
 
 
-import static br.com.geraldoferraz.scanyourpath.util.strings.StringComparator.STARTS_WITH;
 import static br.com.geraldoferraz.scanyourpath.util.strings.StringComparator.ENDS_WITH;
+import static br.com.geraldoferraz.scanyourpath.util.strings.StringComparator.STARTS_WITH;
 
 import java.lang.annotation.Annotation;
 
@@ -54,6 +54,18 @@ public final class SearchArguments {
 	
 	public static final CombinableArgument havingMethodNameEndingWith(String methodName) {
 		return new CombinableArgument(new MethodNameArgument(methodName,ENDS_WITH));
+	}
+	
+	public static final CombinableArgument havingFieldWithName(String fieldName) {
+		return new CombinableArgument(new FieldNameArgument(fieldName));
+	}
+	
+	public static final CombinableArgument havingFieldNameStartingWith(String fieldName) {
+		return new CombinableArgument(new FieldNameArgument(fieldName,STARTS_WITH));
+	}
+	
+	public static final CombinableArgument havingFieldNameEndingWith(String fieldName) {
+		return new CombinableArgument(new FieldNameArgument(fieldName,ENDS_WITH));
 	}
 	
 	public static final CombinableArgument namedWith(String className) {
