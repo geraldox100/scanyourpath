@@ -54,7 +54,7 @@ public class ClassPathResolverTest extends TestBase{
 	@Test
 	public void whenGetClassesExactlyInAndTheClassIsOnPackage() {
 		Set<Class<?>> classes = classPathResolver.getClassesExactlyIn("br.com.geraldoferraz.scanyourpath.util");
-		assertEquals(6, classes.size());
+		assertEquals(8, classes.size());
 	}
 	
 	@Test

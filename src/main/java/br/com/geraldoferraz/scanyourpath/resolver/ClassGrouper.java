@@ -5,7 +5,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static br.com.geraldoferraz.scanyourpath.util.ValidationUtil.*;
-
 import javassist.ClassPool;
 import javassist.CtClass;
 
@@ -36,10 +35,13 @@ public class ClassGrouper {
 				try {
 					ClassPool pool = ClassPool.getDefault();
 					CtClass cc = pool.get(className);
-					classes.add(cc.toClass());
+					Class<?> clazz = cc.toClass();
+					classes.add(clazz);
 				} catch (Throwable e) {
 					try {
-						classes.add(Class.forName(className));
+						Class<?> clazz = Class.forName(className);
+						clazz = replaceClazzForSuperClassIfClazzIsEnum(clazz);
+						classes.add(clazz);
 					} catch (ClassNotFoundException e1) {
 						// e1.printStackTrace();
 					}
@@ -47,6 +49,13 @@ public class ClassGrouper {
 				}
 			}
 		}
+	}
+
+	private Class<?> replaceClazzForSuperClassIfClazzIsEnum(Class<?> clazz) {
+		if(clazz.getSimpleName().isEmpty()){
+			clazz = clazz.getSuperclass();
+		}
+		return clazz;
 	}
 
 	public void addClass(String clazz) {

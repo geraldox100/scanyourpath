@@ -3,17 +3,18 @@ package br.com.geraldoferraz.scanyourpath.searches.loaders;
 import static br.com.geraldoferraz.scanyourpath.util.ClassUtil.getFullQualifiedName;
 import static br.com.geraldoferraz.scanyourpath.util.ClassUtil.isClass;
 import static br.com.geraldoferraz.scanyourpath.util.ClassUtil.removeDirectory;
-import static br.com.geraldoferraz.scanyourpath.util.ValidationUtil.argumentValidation;
+import static br.com.geraldoferraz.scanyourpath.util.ValidationUtil.argumentsValidation;
 
 import java.io.File;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import static br.com.geraldoferraz.scanyourpath.util.ValidationUtil.argumentValidation;
 
 class BinLoader implements ClassPathLoader {
 
 	public Set<String> resolveClassName(List<File> classPath) {
-		validateArguments(classPath);
+		argumentValidation(classPath);
 		Set<String> classes = new HashSet<String>();
 		for (File file : classPath) {
 			if (file.isDirectory()) {
@@ -24,7 +25,7 @@ class BinLoader implements ClassPathLoader {
 	}
 
 	final Set<String> getClassesInDirectory(File location, String folderToRemove) {
-		validateArguments(location, folderToRemove);
+		argumentsValidation(location, folderToRemove);
 		Set<String> classes = new HashSet<String>();
 		File[] files = location.listFiles();
 
@@ -32,18 +33,13 @@ class BinLoader implements ClassPathLoader {
 			if (file.isDirectory()) {
 				classes.addAll(getClassesInDirectory(file, folderToRemove));
 			} else if (isClass(file)) {
-				String fullQualifiedName = removeDirectory(getFullQualifiedName(file), folderToRemove);
-				classes.add(fullQualifiedName);
+				classes.add(removeDirectory(getFullQualifiedName(file), folderToRemove));
 			}
 		}
 
 		return classes;
 	}
 
-	private void validateArguments(Object... objects) {
-		for (Object object : objects) {
-			argumentValidation(object);
-		}
-	}
+	
 
 }

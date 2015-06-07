@@ -1,7 +1,6 @@
-package br.com.geraldoferraz.scanyourpath.util.strings;
+package br.com.geraldoferraz.scanyourpath.util.enums;
 
 import static br.com.geraldoferraz.scanyourpath.util.ValidationUtil.emptyStringValidation;
-
 
 public enum StringComparator {
 	ENDS_WITH {

@@ -1,7 +1,11 @@
 package br.com.geraldoferraz.scanyourpath.searches.filters.arguments;
 
 import static br.com.geraldoferraz.scanyourpath.searches.filters.arguments.SearchArguments.annotedWith;
+import static br.com.geraldoferraz.scanyourpath.searches.filters.arguments.SearchArguments.doesnt;
+import static br.com.geraldoferraz.scanyourpath.searches.filters.arguments.SearchArguments.dont;
 import static br.com.geraldoferraz.scanyourpath.searches.filters.arguments.SearchArguments.havingConstructorAnnotedWith;
+import static br.com.geraldoferraz.scanyourpath.searches.filters.arguments.SearchArguments.havingConstructorReceivingAtLeast;
+import static br.com.geraldoferraz.scanyourpath.searches.filters.arguments.SearchArguments.havingConstructorReceivingExactly;
 import static br.com.geraldoferraz.scanyourpath.searches.filters.arguments.SearchArguments.havingFieldAnnotedWith;
 import static br.com.geraldoferraz.scanyourpath.searches.filters.arguments.SearchArguments.havingFieldNameEndingWith;
 import static br.com.geraldoferraz.scanyourpath.searches.filters.arguments.SearchArguments.havingFieldNameStartingWith;
@@ -12,8 +16,6 @@ import static br.com.geraldoferraz.scanyourpath.searches.filters.arguments.Searc
 import static br.com.geraldoferraz.scanyourpath.searches.filters.arguments.SearchArguments.havingMethodWithName;
 import static br.com.geraldoferraz.scanyourpath.searches.filters.arguments.SearchArguments.namedWith;
 import static br.com.geraldoferraz.scanyourpath.searches.filters.arguments.SearchArguments.not;
-import static br.com.geraldoferraz.scanyourpath.searches.filters.arguments.SearchArguments.dont;
-import static br.com.geraldoferraz.scanyourpath.searches.filters.arguments.SearchArguments.doesnt;
 import static br.com.geraldoferraz.scanyourpath.searches.filters.arguments.SearchArguments.thatExtends;
 import static br.com.geraldoferraz.scanyourpath.searches.filters.arguments.SearchArguments.thatImplements;
 import static br.com.geraldoferraz.scanyourpath.searches.filters.arguments.SearchArguments.thatNameEndsWith;
@@ -53,6 +55,8 @@ public class SearchArgumentsTest extends TestBase {
 		assertThat(namedWith("ANY"), notNullValue());
 		assertThat(thatNameStartsWith("ANY"), notNullValue());
 		assertThat(thatNameEndsWith("ANY"), notNullValue());
+		assertThat(havingConstructorReceivingAtLeast(String.class), notNullValue());
+		assertThat(havingConstructorReceivingExactly(String.class), notNullValue());
 	}
 
 	@Test
@@ -75,6 +79,8 @@ public class SearchArgumentsTest extends TestBase {
 		assertThat(namedWith("ANY"), instanceOf(CombinableArgument.class));
 		assertThat(thatNameStartsWith("ANY"), instanceOf(CombinableArgument.class));
 		assertThat(thatNameEndsWith("ANY"), instanceOf(CombinableArgument.class));
+		assertThat(havingConstructorReceivingAtLeast(String.class), instanceOf(CombinableArgument.class));
+		assertThat(havingConstructorReceivingExactly(String.class), instanceOf(CombinableArgument.class));
 	}
 
 	@Test
@@ -89,6 +95,8 @@ public class SearchArgumentsTest extends TestBase {
 		assertThat(havingMethodNameStartingWith("ANY"), instanceOf(Argument.class));
 		assertThat(havingMethodNameEndingWith("ANY"), instanceOf(Argument.class));
 		assertThat(namedWith("ANY"), instanceOf(Argument.class));
+		assertThat(havingConstructorReceivingAtLeast(String.class), instanceOf(Argument.class));
+		assertThat(havingConstructorReceivingExactly(String.class), instanceOf(Argument.class));
 	}
 
 	@Test(expected = IllegalArgumentException.class)
@@ -150,7 +158,7 @@ public class SearchArgumentsTest extends TestBase {
 	public void passingAnNullArgumentToHavingMethodNameEndingWith() {
 		havingMethodNameEndingWith(null);
 	}
-	
+
 	@Test(expected = EmptyStringException.class)
 	public void passingAnNullArgumentToHavingFieldWithName() {
 		havingFieldWithName(null);
@@ -170,27 +178,27 @@ public class SearchArgumentsTest extends TestBase {
 	public void passingAnEmptyStringToHavingMethodWithName() {
 		havingMethodWithName("");
 	}
-	
+
 	@Test(expected = EmptyStringException.class)
 	public void passingAnEmptyStringToHavingMethodNameStartingWith() {
 		havingMethodNameStartingWith("");
 	}
-	
+
 	@Test(expected = EmptyStringException.class)
 	public void passingAnEmptyStringToHavingMethodNameEndingWith() {
 		havingMethodNameEndingWith("");
 	}
-	
+
 	@Test(expected = EmptyStringException.class)
 	public void passingAnEmptyStringToHavingFieldWithName() {
 		havingFieldWithName("");
 	}
-	
+
 	@Test(expected = EmptyStringException.class)
 	public void passingAnEmptyStringToHavingMethodNameFieldWith() {
 		havingFieldNameStartingWith("");
 	}
-	
+
 	@Test(expected = EmptyStringException.class)
 	public void passingAnEmptyStringToHavingFieldNameEndingWith() {
 		havingFieldNameEndingWith("");
@@ -216,4 +224,15 @@ public class SearchArgumentsTest extends TestBase {
 		thatNameStartsWith("");
 	}
 
+	@Test(expected = IllegalArgumentException.class)
+	public void passingAnNullArgumentToHavingConstructorReceivingAtLeast() {
+		Class<?>[] classes = null;
+		havingConstructorReceivingAtLeast(classes);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void passingAnNullArgumentToHavingConstructorReceivingExactly() {
+		Class<?>[] classes = null;
+		havingConstructorReceivingExactly(classes);
+	}
 }

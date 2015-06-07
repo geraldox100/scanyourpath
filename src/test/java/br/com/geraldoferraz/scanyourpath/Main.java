@@ -1,20 +1,51 @@
 package br.com.geraldoferraz.scanyourpath;
 
 import static br.com.geraldoferraz.scanyourpath.searches.filters.arguments.SearchArguments.annotedWith;
+import static br.com.geraldoferraz.scanyourpath.searches.filters.arguments.SearchArguments.havingConstructorReceivingExactly;
 import static br.com.geraldoferraz.scanyourpath.searches.filters.arguments.SearchArguments.havingMethodAnnotedWith;
+import static br.com.geraldoferraz.scanyourpath.searches.filters.arguments.SearchArguments.thatNameStartsWith;
 import static br.com.geraldoferraz.scanyourpath.searches.loaders.ClassPathLoaderTypes.folder;
 import static br.com.geraldoferraz.scanyourpath.searches.loaders.ClassPathLoaderTypes.full;
 import static br.com.geraldoferraz.scanyourpath.searches.loaders.ClassPathLoaderTypes.jar;
 
 import java.util.Set;
 
-import br.com.geraldoferraz.scanyourpath.Scanner;
 import br.com.geraldoferraz.scanyourpath.searches.filters.arguments.examples.ClassLevelAnnotation;
 import br.com.geraldoferraz.scanyourpath.searches.filters.arguments.examples.MethodLevelAnnotation;
 
 public class Main {
-
+	
 	public static void main(String[] args) {
+		long inicio = System.currentTimeMillis();
+		long fim = System.currentTimeMillis();
+		
+		Scanner scan = new Scanner();
+		scan.limitSearchingPathTo(full());
+//		
+		Set<Class<?>> classes = scan.allClasses(thatNameStartsWith("Class").and(havingConstructorReceivingExactly(String.class,Integer.class))).startingIn("br.com.geraldoferraz.scanyourpath");
+		print(classes);
+//		Constructor<?>[] declaredConstructors = classes.iterator().next().getDeclaredConstructors();
+//		for (Constructor<?> constructor : declaredConstructors) {
+//			Parameter[] parameters = constructor.getParameters();
+//			for (Parameter parameter : parameters) {
+//				if(parameter.isVarArgs()){
+//					System.out.println(parameter.getParameterizedType().getTypeName());
+//					System.out.println(parameter.getType().getSimpleName());
+//					System.out.println(parameter.getType().equals(Short[].class));
+//				}
+//				
+//			}
+//			System.out.println();
+//			Class<?>[] parameterTypes = constructor.getParameterTypes();
+//			for (Class<?> class1 : parameterTypes) {
+//				System.out.println(class1);
+//			}
+//			System.out.println("-----");
+//		}
+		System.out.println("fim - " + (fim - inicio));
+	}
+
+	public static void main1(String[] args) {
 		long inicio = System.currentTimeMillis();
 		Scanner scan = new Scanner();
 		String exactlyIn = "br.com";

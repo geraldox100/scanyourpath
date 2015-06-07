@@ -1,7 +1,7 @@
 package br.com.geraldoferraz.scanyourpath.searches.filters.arguments;
 
-import static br.com.geraldoferraz.scanyourpath.util.strings.StringComparator.STARTS_WITH;
-import static br.com.geraldoferraz.scanyourpath.util.strings.StringComparator.ENDS_WITH;
+import static br.com.geraldoferraz.scanyourpath.util.enums.StringComparator.ENDS_WITH;
+import static br.com.geraldoferraz.scanyourpath.util.enums.StringComparator.STARTS_WITH;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.Assert.assertThat;
 

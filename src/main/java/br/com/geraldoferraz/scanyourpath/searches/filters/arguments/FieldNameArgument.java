@@ -5,7 +5,7 @@ import static br.com.geraldoferraz.scanyourpath.util.ValidationUtil.emptyStringV
 
 import java.lang.reflect.Field;
 
-import br.com.geraldoferraz.scanyourpath.util.strings.StringComparator;
+import br.com.geraldoferraz.scanyourpath.util.enums.StringComparator;
 
 public class FieldNameArgument implements Argument {
 

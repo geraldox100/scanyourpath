@@ -2,7 +2,7 @@ package br.com.geraldoferraz.scanyourpath.searches.filters.arguments;
 
 import static br.com.geraldoferraz.scanyourpath.util.ValidationUtil.argumentValidation;
 import static br.com.geraldoferraz.scanyourpath.util.ValidationUtil.emptyStringValidation;
-import br.com.geraldoferraz.scanyourpath.util.strings.StringComparator;
+import br.com.geraldoferraz.scanyourpath.util.enums.StringComparator;
 
 public class ClassNameArgument implements Argument {
 

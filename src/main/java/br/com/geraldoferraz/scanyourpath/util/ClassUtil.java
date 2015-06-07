@@ -7,7 +7,6 @@ import java.io.File;
 import java.util.jar.JarEntry;
 
 import br.com.geraldoferraz.scanyourpath.exception.NoPackageException;
-
 public final class ClassUtil {
 	
 	private static String separator = System.getProperty("file.separator");
