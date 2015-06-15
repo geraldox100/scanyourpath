@@ -1,6 +1,10 @@
 package br.com.geraldoferraz.scanyourpath.resolver;
 
+
+import static org.hamcrest.core.IsEqual.equalTo;
+import static org.hamcrest.core.IsNot.not;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.when;
 
 import java.io.File;
@@ -72,7 +76,8 @@ public class ClassPathResolverTest extends TestBase{
 	@Test
 	public void whenGetClassesAnyWhere() {
 		Set<Class<?>> classes = classPathResolver.getClassesAnyWhere();
-		assertEquals(140, classes.size());
+		assertThat(classes, not(equalTo(null)));
+		assertThat(classes.size(), not(equalTo(0)));
 	}
 	
 	@Test
