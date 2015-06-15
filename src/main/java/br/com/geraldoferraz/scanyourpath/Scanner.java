@@ -1,7 +1,5 @@
 package br.com.geraldoferraz.scanyourpath;
 
-import java.util.Set;
-
 import br.com.geraldoferraz.scanyourpath.resolver.ClassPathResolver;
 import br.com.geraldoferraz.scanyourpath.resolver.JavaClassPathResolver;
 import br.com.geraldoferraz.scanyourpath.searches.filters.SearchAll;
@@ -13,7 +11,6 @@ import br.com.geraldoferraz.scanyourpath.searches.loaders.ClassPathLoader;
 /**
  * 
  * @author Geraldo Ferraz
- * 
  *
  */
 public class Scanner {
@@ -22,27 +19,18 @@ public class Scanner {
 
 	private ClassPathResolver resolver = ClassPathResolver.newInstance(new JavaClassPathResolver());
 
-	public Scanner allClasses(Argument argument) {
+	public Location allClasses(Argument argument) {
 		searchType = new SearchByArguments(argument);
-		return this;
+		return new Location(searchType,resolver);
 	}
 
-	public Scanner allClasses() {
+	public Location allClasses() {
 		searchType = new SearchAll();
-		return this;
+		return new Location(searchType,resolver);
 	}
 
-	public Set<Class<?>> exactlyIn(String packageName) {
-		return searchType.search(resolver.getClassesExactlyIn(packageName));
-	}
-
-	public Set<Class<?>> startingIn(String packageName) {
-		return searchType.search(resolver.getClassesStartingIn(packageName));
-	}
-
-	public Scanner limitSearchingPathTo(ClassPathLoader classPathSearchType) {
+	public void limitSearchingPathTo(ClassPathLoader classPathSearchType) {
 		resolver.limitSearchingPathTo(classPathSearchType);
-		return this;
 	}
 
 }

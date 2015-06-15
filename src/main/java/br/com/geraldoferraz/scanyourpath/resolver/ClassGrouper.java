@@ -36,16 +36,15 @@ public class ClassGrouper {
 					ClassPool pool = ClassPool.getDefault();
 					CtClass cc = pool.get(className);
 					Class<?> clazz = cc.toClass();
+					clazz = replaceClazzForSuperClassIfClazzIsEnum(clazz);
 					classes.add(clazz);
 				} catch (Throwable e) {
 					try {
 						Class<?> clazz = Class.forName(className);
 						clazz = replaceClazzForSuperClassIfClazzIsEnum(clazz);
 						classes.add(clazz);
-					} catch (ClassNotFoundException e1) {
-						// e1.printStackTrace();
+					} catch (Throwable e1) {
 					}
-					// e.printStackTrace();
 				}
 			}
 		}

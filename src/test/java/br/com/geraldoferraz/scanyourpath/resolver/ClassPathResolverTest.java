@@ -70,6 +70,12 @@ public class ClassPathResolverTest extends TestBase{
 	}
 	
 	@Test
+	public void whenGetClassesAnyWhere() {
+		Set<Class<?>> classes = classPathResolver.getClassesAnyWhere();
+		assertEquals(140, classes.size());
+	}
+	
+	@Test
 	@PrepareForTest(value={ClassPathResolver.class})
 	public void whenGetClassesAndTheresAClassWithNoPackage() {
 		ensureClassPathLoderLoadsAClassThatHasNoPackage();

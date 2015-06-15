@@ -40,6 +40,15 @@ public class ClassPathResolver {
 		this.classPathLoader = classPathLoader;
 	}
 
+	public Set<Class<?>> getClassesAnyWhere() {
+		initializeClassesPerPackage();
+		Set<Class<?>> retorno = new HashSet<Class<?>>();
+		for (String packageNameKey : classesPerPackage.keySet()) {
+			retorno.addAll(classesPerPackage.get(packageNameKey).getClassesOnString());
+		}
+		return retorno;
+	}
+
 	public Set<Class<?>> getClassesExactlyIn(String packageName) {
 		emptyStringValidation(packageName);
 		initializeClassesPerPackage();
@@ -63,7 +72,7 @@ public class ClassPathResolver {
 	}
 
 	private void initializeClassesPerPackage() {
-		
+
 		if (classesPerPackage == null || classesPerPackage.size() == 0) {
 			initializeClassesPerPackageMap();
 			sortByPackage(loadClassesByName());
@@ -93,7 +102,7 @@ public class ClassPathResolver {
 				try {
 					classPath.add(new File(url.toURI()));
 				} catch (URISyntaxException e) {
-					 e.printStackTrace();
+					e.printStackTrace();
 				}
 			}
 		}
@@ -105,12 +114,12 @@ public class ClassPathResolver {
 
 	private void sortByPackage(Set<String> classeByName) {
 		for (String className : classeByName) {
-			try{
+			try {
 				String packageName = extractPackageNameFromFullQualifiedName(className);
 				verifyThatPackageAlreadyExists(packageName);
 				classesPerPackage.get(packageName).addClass(className);
-			}catch(NoPackageException e){
-				
+			} catch (NoPackageException e) {
+
 			}
 		}
 	}
