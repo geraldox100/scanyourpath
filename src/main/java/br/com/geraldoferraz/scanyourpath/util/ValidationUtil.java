@@ -35,7 +35,7 @@ public class ValidationUtil {
 	 * @throws br.com.geraldoferraz.scanyourpath.util.EmptyStringException if the parameter is null
 	 */
 	public static void emptyStringValidation(String value) {
-		if (value == null || value.isEmpty()) {
+		if (value == null || value.trim().isEmpty()) {
 			throw new EmptyStringException(value);
 		}
 	}
