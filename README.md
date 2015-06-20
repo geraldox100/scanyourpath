@@ -16,7 +16,7 @@ To use module on Maven-based projects, use following dependency:
 <dependency>
 	<groupId>br.com.geraldoferraz</groupId>
 	<artifactId>scanyourpath</artifactId>
-	<version>0.0.3</version>
+	<version>1.1.1</version>
 </dependency>
 ````
 (or whatever version is most up-to-date at the moment)
