@@ -39,11 +39,11 @@ Set<Class<?>> classes2 = scan.allClasses().exactlyIn("br.com.geraldoferraz");
 Unlike "exactlyIn", the "startingIn" method will scan all "inner" packages.
 
 The previous example will return all the classes on your class path, but that may not be so intresting.
-Lets try a another example, say you want to find all classes annoted with @Entity:
+Lets try a another example, say you want to find all classes annotated with @Entity:
 ````
-Set<Class<?>> classes = scan.allClasses(annotedOnClassWith(Entity.class)).exactlyIn("br.com.domain");
+Set<Class<?>> classes = scan.allClasses(annotatedOnClassWith(Entity.class)).exactlyIn("br.com.domain");
 ````
-The method "annotedOnClassWith" returns an instance of the Argument interface.
+The method "annotatedOnClassWith" returns an instance of the Argument interface.
 ````
 public interface Argument{
 
@@ -60,7 +60,7 @@ that has not implemented "equals" method yet:
 ````
 
 Set<Class<?>>  classes = scan.allClasses(
-    annotedOnClassWith(Entity.class).and(not(hasMethod("equals")))
+    annotatedOnClassWith(Entity.class).and(not(hasMethod("equals")))
     ).exactlyIn("br.com.domain");
 ````
 If you have a large amount of classes, scanning may take a while.
@@ -138,7 +138,7 @@ Advanced Features
 ==
 You can also combine arguments in order to 	obtain a more specific search.
 ````
-Set<Class<?>> classes = scan.allClasses(annotedWith(Entity.class).and(havingMethodWithName("equals"))).startingIn("br.com.test");
+Set<Class<?>> classes = scan.allClasses(annotatedWith(Entity.class).and(havingMethodWithName("equals"))).startingIn("br.com.test");
 ````
 You will notice that in our previus example (thatNameEndsWith) this is not possible due to the Argument interface is too simple and has no way to allow the combination to other arguments. But not to worry, ScanYourPath has a solution. All you have to do is decorate your own argument with a CombinableArgument class.
 ````
