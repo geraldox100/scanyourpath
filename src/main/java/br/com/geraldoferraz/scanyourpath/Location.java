@@ -28,7 +28,7 @@ public class Location {
 
 	/**
 	 * Tells the scanner that the search should start on the given package and sub-packages.
-	 * @param packageName
+	 * @param packageName The package name to be search
 	 * @return A set of classes that matches the given package and sub-packages
 	 */
 	public Set<Class<?>> startingIn(String packageName) {

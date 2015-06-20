@@ -69,7 +69,7 @@ public final class SearchArguments {
 
 	/**
 	 * Provides a Argument that denies a given argument
-	 * @param clazz to be verified
+	 * @param argument to be verified
 	 * @return a CombinableArgument that allows you to combine other arguments (or, and)
 	 */
 	public static final CombinableArgument not(Argument argument) {
@@ -78,7 +78,7 @@ public final class SearchArguments {
 
 	/**
 	 * Provides a Argument that denies a given argument
-	 * @param clazz to be verified
+	 * @param argument to be verified
 	 * @return a CombinableArgument that allows you to combine other arguments (or, and)
 	 */
 	public static final CombinableArgument dont(Argument argument) {
@@ -87,7 +87,7 @@ public final class SearchArguments {
 
 	/**
 	 * Provides a Argument that denies a given argument
-	 * @param clazz to be verified
+	 * @param argument to be verified
 	 * @return a CombinableArgument that allows you to combine other arguments (or, and)
 	 */
 	public static final CombinableArgument doesnt(Argument argument) {
@@ -96,7 +96,7 @@ public final class SearchArguments {
 
 	/**
 	 * Provides a Argument that checks if the class has a method with the given name
-	 * @param clazz to be verified
+	 * @param methodName to be verified
 	 * @return a CombinableArgument that allows you to combine other arguments (or, and)
 	 */
 	public static final CombinableArgument havingMethodWithName(String methodName) {
@@ -105,7 +105,7 @@ public final class SearchArguments {
 
 	/**
 	 * Provides a Argument that checks if the class has a method with the name starting like the given name
-	 * @param clazz to be verified
+	 * @param methodName to be verified
 	 * @return a CombinableArgument that allows you to combine other arguments (or, and)
 	 */
 	public static final CombinableArgument havingMethodNameStartingWith(String methodName) {
@@ -114,7 +114,7 @@ public final class SearchArguments {
 
 	/**
 	 * Provides a Argument that checks if the class has a method with the name ending like the given name
-	 * @param clazz to be verified
+	 * @param methodName to be verified
 	 * @return a CombinableArgument that allows you to combine other arguments (or, and)
 	 */
 	public static final CombinableArgument havingMethodNameEndingWith(String methodName) {
@@ -123,7 +123,7 @@ public final class SearchArguments {
 
 	/**
 	 * Provides a Argument that checks if the class has a field with the given name
-	 * @param clazz to be verified
+	 * @param fieldName to be verified
 	 * @return a CombinableArgument that allows you to combine other arguments (or, and)
 	 */
 	public static final CombinableArgument havingFieldWithName(String fieldName) {
@@ -132,7 +132,7 @@ public final class SearchArguments {
 
 	/**
 	 * Provides a Argument that checks if the class has a field with the name starting like the given name
-	 * @param clazz to be verified
+	 * @param fieldName to be verified
 	 * @return a CombinableArgument that allows you to combine other arguments (or, and)
 	 */
 	public static final CombinableArgument havingFieldNameStartingWith(String fieldName) {
@@ -141,7 +141,7 @@ public final class SearchArguments {
 
 	/**
 	 * Provides a Argument that checks if the class has a field with the name ending like the given name
-	 * @param clazz to be verified
+	 * @param fieldName to be verified
 	 * @return a CombinableArgument that allows you to combine other arguments (or, and)
 	 */
 	public static final CombinableArgument havingFieldNameEndingWith(String fieldName) {
@@ -150,7 +150,7 @@ public final class SearchArguments {
 
 	/**
 	 * Provides a Argument that checks if the class has the same name as the given class
-	 * @param clazz to be verified
+	 * @param className to be verified
 	 * @return a CombinableArgument that allows you to combine other arguments (or, and)
 	 */
 	public static final CombinableArgument namedWith(String className) {
@@ -159,7 +159,7 @@ public final class SearchArguments {
 
 	/**
 	 * Provides a Argument that checks if the class name starts with the given name
-	 * @param clazz to be verified
+	 * @param className to be verified
 	 * @return a CombinableArgument that allows you to combine other arguments (or, and)
 	 */
 	public static final CombinableArgument thatNameStartsWith(String className) {
@@ -168,7 +168,7 @@ public final class SearchArguments {
 
 	/**
 	 * Provides a Argument that checks if the class name ends with the given name
-	 * @param clazz to be verified
+	 * @param className to be verified
 	 * @return a CombinableArgument that allows you to combine other arguments (or, and)
 	 */
 	public static final CombinableArgument thatNameEndsWith(String className) {
@@ -177,7 +177,7 @@ public final class SearchArguments {
 
 	/**
 	 * Provides a Argument that checks if the class has a constructor with at least the given parameters
-	 * @param clazz to be verified
+	 * @param parameter parameters to be verified
 	 * @return a CombinableArgument that allows you to combine other arguments (or, and)
 	 */
 	public static final CombinableArgument havingConstructorReceivingAtLeast(Class<?>... parameter) {
@@ -186,7 +186,7 @@ public final class SearchArguments {
 
 	/**
 	 * Provides a Argument that checks if the class has a constructor with exacts same parameters
-	 * @param clazz to be verified
+	 * @param parameter parameters to be verified
 	 * @return a CombinableArgument that allows you to combine other arguments (or, and)
 	 */
 	public static final CombinableArgument havingConstructorReceivingExactly(Class<?>... parameter) {

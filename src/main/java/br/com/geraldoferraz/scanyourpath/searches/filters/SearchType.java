@@ -9,11 +9,6 @@ import java.util.Set;
  */
 public interface SearchType {
 
-	/**
-	 * defines the searching method
-	 * @param classes
-	 * @return
-	 */
 	public Set<Class<?>> search(Set<Class<?>> classes);
 
 }

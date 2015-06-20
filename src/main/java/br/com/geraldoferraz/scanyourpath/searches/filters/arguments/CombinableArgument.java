@@ -42,8 +42,8 @@ public final class CombinableArgument implements Argument {
 	 * @param nextArgument the argument to be combined
 	 * @return the same instance so you can continue to combine
 	 */
-	public CombinableArgument and(Argument andArgument) {
-		combine(andArgument, LogicalOperators.AND);
+	public CombinableArgument and(Argument nextArgument) {
+		combine(nextArgument, LogicalOperators.AND);
 		return this;
 	}
 

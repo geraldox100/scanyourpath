@@ -65,7 +65,7 @@ public final class ClassUtil {
 
 	/**
 	 * Extracts the full qualified name of the given JarEntry
-	 * @param JarEntry the JarEntry to extract the full qualifield name
+	 * @param jarEntry the JarEntry to extract the full qualifield name
 	 * @return the full qualified name
 	 * @throws IllegalArgumentException if the JarEntry is null
 	 */

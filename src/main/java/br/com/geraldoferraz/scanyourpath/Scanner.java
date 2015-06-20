@@ -15,8 +15,8 @@ import br.com.geraldoferraz.scanyourpath.searches.loaders.ClassPathLoader;
  * 		Scanner scan = new Scanner();
  * 		scan.allClasses().anyWhere();
  * 
- * For a more refined search try using a search argument and a limiting a path to search: 
- * 		Set<Class<?>> classes = scan.allClasses(annotedOnClassWith(Entity.class)).exactlyIn("br.com.beans");
+ * For a more refined search try using a search argument and a limiting a path to search:
+ * {@code Set<Class<?>> classes = scan.allClasses(annotedOnClassWith(Entity.class)).exactlyIn("br.com.beans");}
  *
  * @author Geraldo Ferraz
  */
@@ -48,7 +48,7 @@ public class Scanner {
 	/**
 	 * This method tells the scanner the classpath type (Jar, Folder, Full).
 	 * @param classPathSearchType The classpath type to be used.
-	 * @see {@link br.com.geraldoferraz.scanyourpath.searches.loaders.ClassPathLoaderTypes}
+	 * See {@link br.com.geraldoferraz.scanyourpath.searches.loaders.ClassPathLoaderTypes} 
 	 */
 	public void limitSearchingPathTo(ClassPathLoader classPathSearchType) {
 		resolver.limitSearchingPathTo(classPathSearchType);

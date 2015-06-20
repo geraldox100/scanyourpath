@@ -30,7 +30,7 @@ public class ClassPathResolver {
 
 	/**
 	 * This method gets the singleton instance of ClassPathResolver
-	 * @param javaClassPathResolver
+	 * @param javaClassPathResolver parameter
 	 * @return the instance of ClassPathResolver
 	 */
 	public static ClassPathResolver getInstance(JavaClassPathResolver javaClassPathResolver) {
@@ -48,7 +48,7 @@ public class ClassPathResolver {
 	/**
 	 * This method limits the searching path to Jar, Folder or Full
 	 * @param classPathLoader The class path loader 
-	 * @see {@link br.com.geraldoferraz.scanyourpath.searches.loaders.ClassPathLoaderTypes}
+	 * See {@link br.com.geraldoferraz.scanyourpath.searches.loaders.ClassPathLoaderTypes}
 	 */
 	public void limitSearchingPathTo(ClassPathLoader classPathLoader) {
 		this.classPathLoader = classPathLoader;
