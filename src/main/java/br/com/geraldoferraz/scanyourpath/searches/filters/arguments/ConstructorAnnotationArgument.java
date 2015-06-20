@@ -5,6 +5,11 @@ import static br.com.geraldoferraz.scanyourpath.util.ValidationUtil.argumentVali
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
 
+/**
+ * This class is a argument that checks annotations on constructors
+ * @author geraldo
+ *
+ */
 public class ConstructorAnnotationArgument implements Argument {
 
 	private final Class<? extends Annotation> annotation;
@@ -25,6 +30,11 @@ public class ConstructorAnnotationArgument implements Argument {
 			}
 		}
 		return answer;
+	}
+	
+	@Override
+	public String toString() {
+		return "Construcotr is annotated with: "+annotation.getSimpleName();
 	}
 
 }

@@ -13,6 +13,11 @@ import java.util.jar.JarEntry;
 
 import br.com.geraldoferraz.scanyourpath.searches.loaders.stream.MyJarInputStream;
 
+/**
+ * JarLoader represents a ClassPathLoader that loads classes from your jars
+ * @author Geraldo Ferraz
+ *
+ */
 class JarLoader implements ClassPathLoader {
 	
 	public Set<String> resolveClassName(List<File> classPath) {

@@ -35,7 +35,7 @@ public class ClassPathResolverTest extends TestBase{
 	
 	@Before
 	public void before() {
-		classPathResolver = ClassPathResolver.newInstance(new JavaClassPathResolver());
+		classPathResolver = ClassPathResolver.getInstance(new JavaClassPathResolver());
 		classPathResolver.limitSearchingPathTo(ClassPathLoaderTypes.folder());
 	}
 

@@ -1,16 +1,16 @@
 package br.com.geraldoferraz.scanyourpath.searches.filters.arguments;
 
-import static br.com.geraldoferraz.scanyourpath.searches.filters.arguments.SearchArguments.annotedWith;
+import static br.com.geraldoferraz.scanyourpath.searches.filters.arguments.SearchArguments.annotatedWith;
 import static br.com.geraldoferraz.scanyourpath.searches.filters.arguments.SearchArguments.doesnt;
 import static br.com.geraldoferraz.scanyourpath.searches.filters.arguments.SearchArguments.dont;
-import static br.com.geraldoferraz.scanyourpath.searches.filters.arguments.SearchArguments.havingConstructorAnnotedWith;
+import static br.com.geraldoferraz.scanyourpath.searches.filters.arguments.SearchArguments.havingConstructorAnnotateddWith;
 import static br.com.geraldoferraz.scanyourpath.searches.filters.arguments.SearchArguments.havingConstructorReceivingAtLeast;
 import static br.com.geraldoferraz.scanyourpath.searches.filters.arguments.SearchArguments.havingConstructorReceivingExactly;
-import static br.com.geraldoferraz.scanyourpath.searches.filters.arguments.SearchArguments.havingFieldAnnotedWith;
+import static br.com.geraldoferraz.scanyourpath.searches.filters.arguments.SearchArguments.havingFieldAnnotateddWith;
 import static br.com.geraldoferraz.scanyourpath.searches.filters.arguments.SearchArguments.havingFieldNameEndingWith;
 import static br.com.geraldoferraz.scanyourpath.searches.filters.arguments.SearchArguments.havingFieldNameStartingWith;
 import static br.com.geraldoferraz.scanyourpath.searches.filters.arguments.SearchArguments.havingFieldWithName;
-import static br.com.geraldoferraz.scanyourpath.searches.filters.arguments.SearchArguments.havingMethodAnnotedWith;
+import static br.com.geraldoferraz.scanyourpath.searches.filters.arguments.SearchArguments.havingMethodAnnotatedWith;
 import static br.com.geraldoferraz.scanyourpath.searches.filters.arguments.SearchArguments.havingMethodNameEndingWith;
 import static br.com.geraldoferraz.scanyourpath.searches.filters.arguments.SearchArguments.havingMethodNameStartingWith;
 import static br.com.geraldoferraz.scanyourpath.searches.filters.arguments.SearchArguments.havingMethodWithName;
@@ -37,15 +37,15 @@ public class SearchArgumentsTest extends TestBase {
 
 	@Test
 	public void nullableAssertions() {
-		assertThat(annotedWith(ClassLevelAnnotation.class), notNullValue());
-		assertThat(havingMethodAnnotedWith(MethodLevelAnnotation.class), notNullValue());
-		assertThat(havingFieldAnnotedWith(FieldLevelAnnotation.class), notNullValue());
-		assertThat(havingConstructorAnnotedWith(ConstructorLevelAnnotation.class), notNullValue());
+		assertThat(annotatedWith(ClassLevelAnnotation.class), notNullValue());
+		assertThat(havingMethodAnnotatedWith(MethodLevelAnnotation.class), notNullValue());
+		assertThat(havingFieldAnnotateddWith(FieldLevelAnnotation.class), notNullValue());
+		assertThat(havingConstructorAnnotateddWith(ConstructorLevelAnnotation.class), notNullValue());
 		assertThat(thatExtends(Object.class), notNullValue());
 		assertThat(thatImplements(Argument.class), notNullValue());
-		assertThat(not(havingFieldAnnotedWith(FieldLevelAnnotation.class)), notNullValue());
-		assertThat(dont(havingFieldAnnotedWith(FieldLevelAnnotation.class)), notNullValue());
-		assertThat(doesnt(havingFieldAnnotedWith(FieldLevelAnnotation.class)), notNullValue());
+		assertThat(not(havingFieldAnnotateddWith(FieldLevelAnnotation.class)), notNullValue());
+		assertThat(dont(havingFieldAnnotateddWith(FieldLevelAnnotation.class)), notNullValue());
+		assertThat(doesnt(havingFieldAnnotateddWith(FieldLevelAnnotation.class)), notNullValue());
 		assertThat(havingMethodWithName("ANY"), notNullValue());
 		assertThat(havingMethodNameStartingWith("ANY"), notNullValue());
 		assertThat(havingMethodNameEndingWith("ANY"), notNullValue());
@@ -61,13 +61,13 @@ public class SearchArgumentsTest extends TestBase {
 
 	@Test
 	public void combinableArgumentAssertions() {
-		assertThat(annotedWith(ClassLevelAnnotation.class), instanceOf(CombinableArgument.class));
-		assertThat(havingMethodAnnotedWith(MethodLevelAnnotation.class), instanceOf(CombinableArgument.class));
-		assertThat(havingFieldAnnotedWith(FieldLevelAnnotation.class), instanceOf(CombinableArgument.class));
-		assertThat(havingConstructorAnnotedWith(ConstructorLevelAnnotation.class), instanceOf(CombinableArgument.class));
-		assertThat(not(havingFieldAnnotedWith(FieldLevelAnnotation.class)), instanceOf(CombinableArgument.class));
-		assertThat(dont(havingFieldAnnotedWith(FieldLevelAnnotation.class)), instanceOf(CombinableArgument.class));
-		assertThat(doesnt(havingFieldAnnotedWith(FieldLevelAnnotation.class)), instanceOf(CombinableArgument.class));
+		assertThat(annotatedWith(ClassLevelAnnotation.class), instanceOf(CombinableArgument.class));
+		assertThat(havingMethodAnnotatedWith(MethodLevelAnnotation.class), instanceOf(CombinableArgument.class));
+		assertThat(havingFieldAnnotateddWith(FieldLevelAnnotation.class), instanceOf(CombinableArgument.class));
+		assertThat(havingConstructorAnnotateddWith(ConstructorLevelAnnotation.class), instanceOf(CombinableArgument.class));
+		assertThat(not(havingFieldAnnotateddWith(FieldLevelAnnotation.class)), instanceOf(CombinableArgument.class));
+		assertThat(dont(havingFieldAnnotateddWith(FieldLevelAnnotation.class)), instanceOf(CombinableArgument.class));
+		assertThat(doesnt(havingFieldAnnotateddWith(FieldLevelAnnotation.class)), instanceOf(CombinableArgument.class));
 		assertThat(thatExtends(Object.class), instanceOf(CombinableArgument.class));
 		assertThat(thatImplements(Argument.class), instanceOf(CombinableArgument.class));
 		assertThat(havingMethodWithName("ANY"), instanceOf(CombinableArgument.class));
@@ -85,10 +85,10 @@ public class SearchArgumentsTest extends TestBase {
 
 	@Test
 	public void argumentAssertions() {
-		assertThat(annotedWith(ClassLevelAnnotation.class), instanceOf(Argument.class));
-		assertThat(havingMethodAnnotedWith(MethodLevelAnnotation.class), instanceOf(Argument.class));
-		assertThat(havingFieldAnnotedWith(FieldLevelAnnotation.class), instanceOf(Argument.class));
-		assertThat(havingConstructorAnnotedWith(ConstructorLevelAnnotation.class), instanceOf(Argument.class));
+		assertThat(annotatedWith(ClassLevelAnnotation.class), instanceOf(Argument.class));
+		assertThat(havingMethodAnnotatedWith(MethodLevelAnnotation.class), instanceOf(Argument.class));
+		assertThat(havingFieldAnnotateddWith(FieldLevelAnnotation.class), instanceOf(Argument.class));
+		assertThat(havingConstructorAnnotateddWith(ConstructorLevelAnnotation.class), instanceOf(Argument.class));
 		assertThat(thatExtends(Object.class), instanceOf(Argument.class));
 		assertThat(thatImplements(Argument.class), instanceOf(Argument.class));
 		assertThat(havingMethodWithName("ANY"), instanceOf(Argument.class));
@@ -101,22 +101,22 @@ public class SearchArgumentsTest extends TestBase {
 
 	@Test(expected = IllegalArgumentException.class)
 	public void passingAnNullArgumentToAnnotedWith() {
-		annotedWith(null);
+		annotatedWith(null);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void passingAnNullArgumentToHavingMethodAnnotedWith() {
-		havingMethodAnnotedWith(null);
+		havingMethodAnnotatedWith(null);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void passingAnNullArgumentToHavingFieldAnnotedWith() {
-		havingFieldAnnotedWith(null);
+		havingFieldAnnotateddWith(null);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void passingAnNullArgumentToHavingConstructorAnnotedWith() {
-		havingConstructorAnnotedWith(null);
+		havingConstructorAnnotateddWith(null);
 	}
 
 	@Test(expected = IllegalArgumentException.class)

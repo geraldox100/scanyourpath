@@ -7,6 +7,12 @@ import static java.util.Arrays.asList;
 import java.lang.reflect.Parameter;
 import java.util.HashSet;
 
+/**
+ * 
+ * This class is for testing whether the first parameter group is contained in the second or the first is exactly equal to the second
+ * @author Geraldo Ferraz
+ *
+ */
 public enum ParameterComparator {
 	AT_LEAST {
 		@Override

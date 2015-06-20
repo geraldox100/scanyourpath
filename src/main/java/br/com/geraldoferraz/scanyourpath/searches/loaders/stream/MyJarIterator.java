@@ -8,6 +8,7 @@ import java.util.jar.JarInputStream;
 
 import static br.com.geraldoferraz.scanyourpath.util.ValidationUtil.*;
 
+
 class MyJarIterator implements Iterator<JarEntry> {
 
 	private JarEntry next;

@@ -8,6 +8,11 @@ import java.lang.reflect.Parameter;
 
 import br.com.geraldoferraz.scanyourpath.util.enums.ParameterComparator;
 
+/**
+ * This is a argument class that checks if a constructor has any of the given paramters
+ * @author geraldo
+ *
+ */
 public class ConstructorArgument implements Argument {
 
 	private final Class<?>[] parameter;
@@ -45,6 +50,11 @@ public class ConstructorArgument implements Argument {
 			}
 		}
 		return false;
+	}
+	
+	@Override
+	public String toString() {
+		return "Has constructor with "+parameterComparator+" "+parameter;
 	}
 
 }

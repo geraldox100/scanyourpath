@@ -7,16 +7,21 @@ import java.lang.reflect.Method;
 
 import br.com.geraldoferraz.scanyourpath.util.enums.StringComparator;
 
+/**
+ * This class is a argument that cheks methods name
+ * @author Geraldo Ferraz
+ *
+ */
 public class MethodNameArgument implements Argument {
 
 	private final String methodName;
 	private final StringComparator stringComparator;
 
-	MethodNameArgument(String methodName) {
+	public MethodNameArgument(String methodName) {
 		this(methodName, StringComparator.EXACTLY);
 	}
 
-	MethodNameArgument(String methodName, StringComparator stringComparator) {
+	public MethodNameArgument(String methodName, StringComparator stringComparator) {
 		emptyStringValidation(methodName);
 		this.stringComparator = stringComparator;
 		this.methodName = methodName;
@@ -37,6 +42,11 @@ public class MethodNameArgument implements Argument {
 		}
 		return false;
 
+	}
+	
+	@Override
+	public String toString() {
+		return "Method name: "+stringComparator+" "+methodName;
 	}
 
 }

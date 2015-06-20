@@ -4,6 +4,11 @@ import static br.com.geraldoferraz.scanyourpath.util.ValidationUtil.argumentVali
 import static br.com.geraldoferraz.scanyourpath.util.ValidationUtil.emptyStringValidation;
 import br.com.geraldoferraz.scanyourpath.util.enums.StringComparator;
 
+/**
+ * This is a argument class the checks class names
+ * @author Geraldo Ferraz
+ *
+ */
 public class ClassNameArgument implements Argument {
 
 	private String className;
@@ -23,6 +28,11 @@ public class ClassNameArgument implements Argument {
 	public boolean validate(Class<?> clazz) {
 		argumentValidation(clazz);
 		return stringComparator.compare(clazz.getSimpleName(), className);
+	}
+	
+	@Override
+	public String toString() {
+		return "Class named "+stringComparator+" "+className;
 	}
 
 }

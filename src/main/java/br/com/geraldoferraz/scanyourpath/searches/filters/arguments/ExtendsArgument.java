@@ -2,6 +2,11 @@ package br.com.geraldoferraz.scanyourpath.searches.filters.arguments;
 
 import static br.com.geraldoferraz.scanyourpath.util.ValidationUtil.argumentValidation;
 
+/**
+ * This class checks if a class extends another
+ * @author Geraldo Ferraz
+ *
+ */
 public class ExtendsArgument implements Argument {
 
 	private final Class<?> clazz;
@@ -13,10 +18,17 @@ public class ExtendsArgument implements Argument {
 
 	public boolean validate(Class<?> clazz) {
 		argumentValidation(clazz);
-		if (!clazz.isAnnotation())
+		if (!clazz.isAnnotation()){
 			return clazz.getSuperclass().equals(this.clazz);
-		else
+		}
+		else{
 			return false;
+		}
+	}
+	
+	@Override
+	public String toString() {
+		return "Class extends: "+clazz.getSimpleName();
 	}
 
 }

@@ -8,6 +8,11 @@ import java.util.jar.JarInputStream;
 
 import static br.com.geraldoferraz.scanyourpath.util.ValidationUtil.*;
 
+/**
+ * Represents a JarInpuStream
+ * @author Geraldo Ferraz
+ *
+ */
 public class MyJarInputStream implements Iterable<JarEntry> {
 
 	private JarInputStream jarInputStream;

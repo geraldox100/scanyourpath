@@ -17,6 +17,10 @@ import br.com.geraldoferraz.scanyourpath.exception.NoPackageException;
 import br.com.geraldoferraz.scanyourpath.searches.loaders.ClassPathLoader;
 import br.com.geraldoferraz.scanyourpath.searches.loaders.ClassPathLoaderTypes;
 
+/**
+ * This class loads classes, sort by package and store them on a class grouper
+ * @author Geraldo Ferraz
+ */
 public class ClassPathResolver {
 
 	private static ClassPathResolver resolver = new ClassPathResolver();
@@ -24,7 +28,12 @@ public class ClassPathResolver {
 	private ClassPathLoader classPathLoader = ClassPathLoaderTypes.folder();
 	private JavaClassPathResolver javaClassPathResolver;
 
-	public static ClassPathResolver newInstance(JavaClassPathResolver javaClassPathResolver) {
+	/**
+	 * This method gets the singleton instance of ClassPathResolver
+	 * @param javaClassPathResolver
+	 * @return the instance of ClassPathResolver
+	 */
+	public static ClassPathResolver getInstance(JavaClassPathResolver javaClassPathResolver) {
 		resolver.setJavaClassPathResolver(javaClassPathResolver);
 		return resolver;
 	}
@@ -36,10 +45,19 @@ public class ClassPathResolver {
 	private ClassPathResolver() {
 	}
 
+	/**
+	 * This method limits the searching path to Jar, Folder or Full
+	 * @param classPathLoader The class path loader 
+	 * @see {@link br.com.geraldoferraz.scanyourpath.searches.loaders.ClassPathLoaderTypes}
+	 */
 	public void limitSearchingPathTo(ClassPathLoader classPathLoader) {
 		this.classPathLoader = classPathLoader;
 	}
 
+	/**
+	 * This method searches and returns the classes from every package found
+	 * @return The set of classes loaded
+	 */
 	public Set<Class<?>> getClassesAnyWhere() {
 		initializeClassesPerPackage();
 		Set<Class<?>> retorno = new HashSet<Class<?>>();
@@ -49,6 +67,12 @@ public class ClassPathResolver {
 		return retorno;
 	}
 
+	/**
+	 * This method searches and returns all classes found exactly in the given package
+	 * @param packageName the package to load
+	 * @return The set of classes that where found on the given package
+	 * @throws br.com.geraldoferraz.scanyourpath.util.EmptyStringException if the given package is null or empty
+	 */
 	public Set<Class<?>> getClassesExactlyIn(String packageName) {
 		emptyStringValidation(packageName);
 		initializeClassesPerPackage();
@@ -59,6 +83,12 @@ public class ClassPathResolver {
 		return classGrouper.getClassesOnString();
 	}
 
+	/**
+	 * This method searches and returns all classes found on the given package and sub-packages
+	 * @param packageName the package to load
+	 * @return The set of classes that where found on the given package and sub-packages
+	 * @throws br.com.geraldoferraz.scanyourpath.util.EmptyStringException if the given package is null or empty
+	 */
 	public Set<Class<?>> getClassesStartingIn(String packageName) {
 		emptyStringValidation(packageName);
 		initializeClassesPerPackage();

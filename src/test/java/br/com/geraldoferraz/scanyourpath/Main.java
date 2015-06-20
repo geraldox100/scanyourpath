@@ -1,8 +1,8 @@
 package br.com.geraldoferraz.scanyourpath;
 
-import static br.com.geraldoferraz.scanyourpath.searches.filters.arguments.SearchArguments.annotedWith;
+import static br.com.geraldoferraz.scanyourpath.searches.filters.arguments.SearchArguments.annotatedWith;
 import static br.com.geraldoferraz.scanyourpath.searches.filters.arguments.SearchArguments.havingConstructorReceivingExactly;
-import static br.com.geraldoferraz.scanyourpath.searches.filters.arguments.SearchArguments.havingMethodAnnotedWith;
+import static br.com.geraldoferraz.scanyourpath.searches.filters.arguments.SearchArguments.havingMethodAnnotatedWith;
 import static br.com.geraldoferraz.scanyourpath.searches.filters.arguments.SearchArguments.thatNameStartsWith;
 import static br.com.geraldoferraz.scanyourpath.searches.loaders.ClassPathLoaderTypes.folder;
 import static br.com.geraldoferraz.scanyourpath.searches.loaders.ClassPathLoaderTypes.full;
@@ -60,22 +60,22 @@ public class Main {
 		scan.allClasses().startingIn("br.com.ca");
 		scan.allClasses().exactlyIn("br.com");
 
-		classes = scan.allClasses(annotedWith(ClassLevelAnnotation.class)).exactlyIn(exactlyIn);
+		classes = scan.allClasses(annotatedWith(ClassLevelAnnotation.class)).exactlyIn(exactlyIn);
 		print(classes);
-		classes = scan.allClasses(havingMethodAnnotedWith(MethodLevelAnnotation.class)).exactlyIn(exactlyIn);
+		classes = scan.allClasses(havingMethodAnnotatedWith(MethodLevelAnnotation.class)).exactlyIn(exactlyIn);
 		print(classes);
-		classes = scan.allClasses(annotedWith(ClassLevelAnnotation.class).and(havingMethodAnnotedWith(MethodLevelAnnotation.class))).exactlyIn(exactlyIn);
+		classes = scan.allClasses(annotatedWith(ClassLevelAnnotation.class).and(havingMethodAnnotatedWith(MethodLevelAnnotation.class))).exactlyIn(exactlyIn);
 		print(classes);
-		classes = scan.allClasses(annotedWith(ClassLevelAnnotation.class).or(havingMethodAnnotedWith(MethodLevelAnnotation.class))).exactlyIn(exactlyIn);
+		classes = scan.allClasses(annotatedWith(ClassLevelAnnotation.class).or(havingMethodAnnotatedWith(MethodLevelAnnotation.class))).exactlyIn(exactlyIn);
 		print(classes);
-		classes = scan.allClasses(annotedWith(ClassLevelAnnotation.class)).startingIn(startingIn);
+		classes = scan.allClasses(annotatedWith(ClassLevelAnnotation.class)).startingIn(startingIn);
 		print(classes);
-		classes = scan.allClasses(havingMethodAnnotedWith(MethodLevelAnnotation.class)).startingIn(startingIn);
+		classes = scan.allClasses(havingMethodAnnotatedWith(MethodLevelAnnotation.class)).startingIn(startingIn);
 		print(classes);
-		classes = scan.allClasses(annotedWith(ClassLevelAnnotation.class).and(havingMethodAnnotedWith(MethodLevelAnnotation.class))).startingIn(startingIn);
+		classes = scan.allClasses(annotatedWith(ClassLevelAnnotation.class).and(havingMethodAnnotatedWith(MethodLevelAnnotation.class))).startingIn(startingIn);
 		print(classes);
 
-		classes = scan.allClasses(annotedWith(ClassLevelAnnotation.class).or(havingMethodAnnotedWith(MethodLevelAnnotation.class))).startingIn(startingIn);
+		classes = scan.allClasses(annotatedWith(ClassLevelAnnotation.class).or(havingMethodAnnotatedWith(MethodLevelAnnotation.class))).startingIn(startingIn);
 		print(classes);
 		classes = scan.allClasses().exactlyIn(exactlyIn);
 		print(classes);

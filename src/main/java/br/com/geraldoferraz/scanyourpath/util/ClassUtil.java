@@ -7,6 +7,12 @@ import java.io.File;
 import java.util.jar.JarEntry;
 
 import br.com.geraldoferraz.scanyourpath.exception.NoPackageException;
+
+/**
+ * The class is used for class validation purpose
+ * @author Geraldo Ferraz
+ *
+ */
 public final class ClassUtil {
 	
 	private static String separator = System.getProperty("file.separator");
@@ -14,6 +20,12 @@ public final class ClassUtil {
 	private ClassUtil() {
 	}
 
+	/**
+	 * This method verifys if the given file is a class representation
+	 * @param file the file to be verified
+	 * @return true if the file represents a class and false otherwise
+	 * @throws IllegalArgumentException if the file is null
+	 */
 	public static boolean isClass(File file) {
 		argumentValidation(file);
 
@@ -25,12 +37,23 @@ public final class ClassUtil {
 		return false;
 	}
 
+	/**
+	 * This method verifys if the given JarEntry is a class representation
+	 * @param jarEntry the JarEntry to be verified
+	 * @return true if the JarEntry represents a class and false otherwise
+	 * @throws IllegalArgumentException if the jarEntry is null
+	 */
 	public static boolean isClass(JarEntry jarEntry) {
 		argumentValidation(jarEntry);
-
 		return jarEntry.getName().endsWith(".class");
 	}
 
+	/**
+	 * Extracts the full qualified name of the given File
+	 * @param file the file to extract the full qualifield name
+	 * @return the full qualified name
+	 * @throws IllegalArgumentException if the file is null
+	 */
 	public static String getFullQualifiedName(File file) {
 		 argumentValidation(file);
 
@@ -40,6 +63,12 @@ public final class ClassUtil {
 		return result;
 	}
 
+	/**
+	 * Extracts the full qualified name of the given JarEntry
+	 * @param JarEntry the JarEntry to extract the full qualifield name
+	 * @return the full qualified name
+	 * @throws IllegalArgumentException if the JarEntry is null
+	 */
 	public static String getFullQualifiedName(JarEntry jarEntry) {
 		argumentValidation(jarEntry);
 
@@ -55,6 +84,13 @@ public final class ClassUtil {
 		return name;
 	}
 
+	/**
+	 * Returns the package from a full qualified name
+	 * @param className The class name to extract the package
+	 * @return the package from the class
+	 * @throws IllegalArgumentException if the class name is null
+	 * @throws br.com.geraldoferraz.scanyourpath.exception.NoPackageException if the class has no package
+	 */
 	public static String extractPackageNameFromFullQualifiedName(String className) {
 		argumentValidation(className);
 		chckeThatClassContainsPackage(className);
@@ -67,6 +103,13 @@ public final class ClassUtil {
 		}
 	}
 
+	/**
+	 * Removes the given folder from the given string
+	 * @param fullName the string to remove the folder
+	 * @param folderToRemove the folder to remove from string
+	 * @return the string without the folder
+	 * @throws br.com.geraldoferraz.scanyourpath.util.EmptyStringException if any parameters is null or empty
+	 */
 	public static String removeDirectory(String fullName, String folderToRemove) {
 		emptyStringValidation(fullName);
 		emptyStringValidation(folderToRemove);

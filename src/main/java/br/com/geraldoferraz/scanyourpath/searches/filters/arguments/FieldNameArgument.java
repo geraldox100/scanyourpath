@@ -7,6 +7,11 @@ import java.lang.reflect.Field;
 
 import br.com.geraldoferraz.scanyourpath.util.enums.StringComparator;
 
+/**
+ * This class is a argument that checks if field names
+ * @author Geraldo Ferraz
+ *
+ */
 public class FieldNameArgument implements Argument {
 
 	private final String fieldName;
@@ -37,6 +42,11 @@ public class FieldNameArgument implements Argument {
 		}
 		return false;
 
+	}
+	
+	@Override
+	public String toString() {
+		return "Field name: "+fieldName;
 	}
 
 }

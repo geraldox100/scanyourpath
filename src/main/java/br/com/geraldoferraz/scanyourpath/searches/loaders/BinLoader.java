@@ -11,6 +11,11 @@ import java.util.List;
 import java.util.Set;
 import static br.com.geraldoferraz.scanyourpath.util.ValidationUtil.argumentValidation;
 
+/**
+ * BinLoader represents a ClassPathLoader that loads classes from your own classes
+ * @author Geraldo Ferraz
+ *
+ */
 class BinLoader implements ClassPathLoader {
 
 	public Set<String> resolveClassName(List<File> classPath) {

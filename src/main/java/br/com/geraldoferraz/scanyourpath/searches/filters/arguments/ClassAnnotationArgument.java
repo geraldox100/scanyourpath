@@ -4,6 +4,11 @@ import java.lang.annotation.Annotation;
 
 import static br.com.geraldoferraz.scanyourpath.util.ValidationUtil.*;
 
+/**
+ * This class is a argument that checks if class is annotated with given annotation
+ * @author geraldo
+ *
+ */
 public final class ClassAnnotationArgument implements Argument {
 
 	private final Class<? extends Annotation> annotation;

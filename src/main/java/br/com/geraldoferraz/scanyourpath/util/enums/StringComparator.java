@@ -2,6 +2,12 @@ package br.com.geraldoferraz.scanyourpath.util.enums;
 
 import static br.com.geraldoferraz.scanyourpath.util.ValidationUtil.emptyStringValidation;
 
+/**
+ * 
+ * This class is for testing if the first string ends with, starts with or is exactly the same as the second string
+ * @author Geraldo Ferraz
+ *
+ */
 public enum StringComparator {
 	ENDS_WITH {
 		@Override
@@ -29,4 +35,5 @@ public enum StringComparator {
 	};
 
 	public abstract boolean compare(String o1, String o2);
+	
 }

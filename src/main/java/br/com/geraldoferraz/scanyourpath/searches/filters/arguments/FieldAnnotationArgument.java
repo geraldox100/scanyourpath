@@ -5,6 +5,11 @@ import static br.com.geraldoferraz.scanyourpath.util.ValidationUtil.argumentVali
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 
+/**
+ * This class is a arguments checks fields annotation
+ * @author Geraldo Ferraz
+ *
+ */
 public final class FieldAnnotationArgument implements Argument {
 
 	private final Class<? extends Annotation> annotation;
@@ -28,7 +33,7 @@ public final class FieldAnnotationArgument implements Argument {
 	
 	@Override
 	public String toString() {
-		return "Field annoted with: "+annotation.getSimpleName();
+		return "Field annotated with: "+annotation.getSimpleName();
 	}
 	
 

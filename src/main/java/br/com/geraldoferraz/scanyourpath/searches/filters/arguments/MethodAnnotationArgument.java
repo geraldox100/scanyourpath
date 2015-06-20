@@ -5,6 +5,11 @@ import static br.com.geraldoferraz.scanyourpath.util.ValidationUtil.argumentVali
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 
+/**
+ * This class is a argument that checks annotations on methods
+ * @author Geraldo Ferraz
+ *
+ */
 public final class MethodAnnotationArgument implements Argument {
 
 	private Class<? extends Annotation> annotation;

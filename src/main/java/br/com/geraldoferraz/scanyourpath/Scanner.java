@@ -10,7 +10,6 @@ import br.com.geraldoferraz.scanyourpath.searches.loaders.ClassPathLoader;
 
 /**
  * 
- * @author Geraldo Ferraz
  * The Scanner class is the starting point for classpath scanning.
  * Example:
  * 		Scanner scan = new Scanner();
@@ -19,12 +18,13 @@ import br.com.geraldoferraz.scanyourpath.searches.loaders.ClassPathLoader;
  * For a more refined search try using a search argument and a limiting a path to search: 
  * 		Set<Class<?>> classes = scan.allClasses(annotedOnClassWith(Entity.class)).exactlyIn("br.com.beans");
  *
+ * @author Geraldo Ferraz
  */
 public class Scanner {
 
 	private SearchType searchType;
 
-	private ClassPathResolver resolver = ClassPathResolver.newInstance(new JavaClassPathResolver());
+	private ClassPathResolver resolver = ClassPathResolver.getInstance(new JavaClassPathResolver());
 
 	/**
 	 * This method tells the scanner that all classes must match the given argument.
