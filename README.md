@@ -153,3 +153,18 @@ public CombinableArgument thatNameStartsWith(String name){
 }
 ````
 The CombinableArgument class allows you to combine arguments using the logical operators "And" and "Or".
+
+Known problems
+--
+Due to how Maven manages classpath you may have to add to your mave-surefire plugin the following configuration:
+````
+<plugin>
+	<groupId>org.apache.maven.plugins</groupId>
+	<artifactId>maven-surefire-plugin</artifactId>
+	<configuration>
+		<useSystemClassLoader>false</useSystemClassLoader>
+	</configuration>
+</plugin>
+````
+
+for more information read <a href="http://maven.apache.org/surefire/maven-surefire-plugin/examples/class-loading.html">this</a>.
