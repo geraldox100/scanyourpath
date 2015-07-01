@@ -4,7 +4,6 @@ import static br.com.geraldoferraz.scanyourpath.util.ValidationUtil.argumentVali
 import static br.com.geraldoferraz.scanyourpath.util.ValidationUtil.emptyArrayValidation;
 import static java.util.Arrays.asList;
 
-import java.lang.reflect.Parameter;
 import java.util.HashSet;
 
 /**
@@ -16,18 +15,18 @@ import java.util.HashSet;
 public enum ParameterComparator {
 	AT_LEAST {
 		@Override
-		public boolean compare(Parameter[] parameters, Class<?>... parameterToCompare) {
+		public boolean compare(Class<?>[] parameters, Class<?>... parameterToCompare) {
 			argumentValidation(parameters);
 			argumentValidation(parameterToCompare);
 			emptyArrayValidation(parameterToCompare);
 
 			HashSet<Class<?>> parametersToCompareSet = new HashSet<Class<?>>(asList(parameterToCompare));
 			HashSet<Class<?>> parametersSet = new HashSet<Class<?>>();
-			for (Parameter parameter : parameters) {
-				if (parameter.isVarArgs()) {
-					parametersSet.add(parameter.getType().getComponentType());
+			for (Class<?> parameter : parameters) {
+				if (parameter.isArray()) {
+					parametersSet.add(parameter.getComponentType());
 				}
-				parametersSet.add(parameter.getType());
+				parametersSet.add(parameter);
 			}
 			return parametersSet.containsAll(parametersToCompareSet);
 		}
@@ -35,14 +34,14 @@ public enum ParameterComparator {
 	},
 	EXACTLY {
 		@Override
-		public boolean compare(Parameter[] parameters, Class<?>... parameterToCompare) {
+		public boolean compare(Class<?>[] parameters, Class<?>... parameterToCompare) {
 			argumentValidation(parameters);
 			argumentValidation(parameterToCompare);
 			emptyArrayValidation(parameterToCompare);
 			
 			if (parameters.length == parameterToCompare.length) {
 				for (int i = 0; i < parameterToCompare.length; i++) {
-					if (!parameters[i].getType().equals(parameterToCompare[i])) {
+					if (!parameters[i].equals(parameterToCompare[i])) {
 						return false;
 					}
 				}
@@ -52,5 +51,5 @@ public enum ParameterComparator {
 		}
 	};
 
-	public abstract boolean compare(Parameter[] type, Class<?>... parameterToCompare);
+	public abstract boolean compare(Class<?>[] type, Class<?>... parameterToCompare);
 }

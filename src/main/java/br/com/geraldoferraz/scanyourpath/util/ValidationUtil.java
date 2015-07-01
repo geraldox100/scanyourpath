@@ -45,7 +45,7 @@ public class ValidationUtil {
 	 *             if the parameter is null
 	 */
 	public static void emptyStringValidation(String value) {
-		if (value == null || value.trim().isEmpty()) {
+		if (value == null || value.trim().length() == 0) {
 			throw new EmptyStringException(value);
 		}
 	}

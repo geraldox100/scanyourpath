@@ -4,7 +4,6 @@ import static br.com.geraldoferraz.scanyourpath.util.ValidationUtil.argumentVali
 import static br.com.geraldoferraz.scanyourpath.util.ValidationUtil.emptyArrayValidation;
 
 import java.lang.reflect.Constructor;
-import java.lang.reflect.Parameter;
 
 import br.com.geraldoferraz.scanyourpath.util.enums.ParameterComparator;
 
@@ -44,7 +43,7 @@ public class ConstructorArgument implements Argument {
 
 		Constructor<?>[] constructors = clazz.getDeclaredConstructors();
 		for (Constructor<?> constructor : constructors) {
-			Parameter[] parameters = constructor.getParameters();
+			Class<?>[] parameters = constructor.getParameterTypes();
 			if (parameterComparator.compare(parameters, parameter)) {
 				return true;
 			}

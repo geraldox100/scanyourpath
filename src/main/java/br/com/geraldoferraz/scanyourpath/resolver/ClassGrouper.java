@@ -64,7 +64,7 @@ public class ClassGrouper {
 	}
 
 	private Class<?> replaceClazzForSuperClassIfClazzIsEnum(Class<?> clazz) {
-		if(clazz.getSimpleName().isEmpty()){
+		if(clazz.getSimpleName().length() == 0){
 			clazz = clazz.getSuperclass();
 		}
 		return clazz;
